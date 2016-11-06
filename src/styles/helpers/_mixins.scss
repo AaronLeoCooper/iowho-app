@@ -76,3 +76,9 @@ $sm-min: 568px;
     @media (min-width: $sm-min) { @content ; }
   }
 }
+
+@mixin gradient-circle($color: #fff, $spacing: 50%) {
+  background: -moz-radial-gradient(center, ellipse cover,  rgba($color,1) 0%, rgba($color,0) $spacing, rgba($color,0) 100%);
+  background: -webkit-radial-gradient(center, ellipse cover,  rgba($color,1) 0%,rgba($color,0) $spacing,rgba($color,0) 100%);
+  background: radial-gradient(ellipse at center,  rgba($color,1) 0%,rgba($color,0) $spacing,rgba($color,0) 100%);
+}

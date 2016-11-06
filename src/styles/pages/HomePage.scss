@@ -1,0 +1,22 @@
+.HomePage {
+  .homepage-logo {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 20px;
+  }
+
+  .homepage-logo-img,
+  .homepage-logo-text {
+    display: block;
+    margin: 0 auto;
+  }
+
+  .homepage-logo-img {
+    width: 150px;
+    margin-bottom: 10px;
+  }
+
+  .homepage-logo-text {
+    font-size: 1rem;
+  }
+}

@@ -3,7 +3,6 @@
  */
 
 const env = process.env.NODE_ENV || 'development'
-const usingHMR = process.env.HMR === 'true' || false
 const isProduction = env === 'production'
 
 const path = require('path')
@@ -21,8 +20,7 @@ const autoprefixerBrowsers = [ 'ie >= 9', 'ie_mob >= 10', 'ff >= 30', 'chrome >=
 const runSequence = require('run-sequence')
 
 const webpack = require('webpack')
-// const WebpackDevServer = require('webpack-dev-server')
-const webpackConfigSrc = usingHMR ? './webpack/config.hmr' : './webpack/config.build'
+const webpackConfigSrc = './webpack/config.build'
 const webpackConfig = require(webpackConfigSrc)
 
 const root = __dirname
@@ -89,20 +87,6 @@ gulp.task('html', function (cb) {
     .pipe(size({ title: 'html' }))
 })
 
-// gulp.task('webpack-dev-server', function (cb) {
-//   new WebpackDevServer(webpack(webpackConfig), {
-//     historyApiFallback: true,
-//     hot: true,
-//     inline: true,
-//     publicPath: webpackConfig.output.publicPath
-//   }).listen(3000, 'localhost', function (err) {
-//     if (err) {
-//       throw new gutil.PluginError('webpack-dev-server', err)
-//     }
-//     gutil.log('[webpack-dev-server]', 'http://localhost:3000/webpack-dev-server/src/__hmr.html')
-//   })
-// })
-
 const webpackBuild = (cb) => {
   return (err, stats) => {
     if (err) {
@@ -130,15 +114,8 @@ gulp.task('watch', function () {
   gulp.watch(path.join(srcPath.styles, '**/*.scss'), ['sass'])
   gulp.watch(path.join(srcPath.images, '**/*'), ['images'])
   gulp.watch(path.join(srcPath.fonts, '**/*'), ['fonts'])
-  // gulp.watch(path.join(srcPath.scripts, '**/*'), ['webpack-dev-server'])
   gulp.watch(path.join(srcPath.html, buildHTML), ['html'])
 })
-
-// default development - watch & HMR
-// gulp.task('default', ['clean'], function (cb) {
-//   gutil.log('gulp - running task: [ default ]')
-//   runSequence(['html', 'sass', 'images', 'fonts'], ['webpack-dev-server', 'watch'], cb)
-// })
 
 // build:dev
 gulp.task('build:dev', ['clean'], function (cb) {

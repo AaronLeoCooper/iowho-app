@@ -23,6 +23,22 @@ html,
 body {
   position: relative;
   display: block;
+  line-height: 1.6rem;
+}
+
+body {
+  background-image: url(../images/noise100.png);
+
+  &:before {
+    content: '';
+    position: fixed;
+    @include gradient-circle(#fff);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    pointer-events: none;
+  }
 }
 
 html,
@@ -31,6 +47,16 @@ input,
 textarea,
 select {
   @include font(serif);
+  font-weight: 100;
+  font-size: $fontsize-default;
+  color: $color-navy-1;
+}
+
+h1,
+h2,
+h3 {
+  @include font(sans);
+  font-weight: 100;
 }
 
 span {

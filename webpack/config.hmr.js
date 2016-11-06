@@ -65,7 +65,7 @@ module.exports = {
         include: [ path.join(root, srcDir, 'styles') ]
       },
       { // HMR only:
-        test: /\.(png|jpg|gif|woff2|ttf)$/,
+        test: /\.(png|jpg|gif|svg|woff2|ttf)$/,
         loader: 'url-loader',
         include: [ path.join(root, srcDir, 'images'), path.join(root, srcDir, 'fonts') ]
       }
