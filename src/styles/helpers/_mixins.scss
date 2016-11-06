@@ -1,0 +1,82 @@
+@mixin arrow($size: 10px, $bg: #fff, $border-color: #d9d9d9, $left: auto, $right: auto, $arrow-margin-bottom: -1px) {
+  &:after,
+  &:before {
+    bottom: 100%;
+    border: solid transparent;
+    content: '';
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    margin-bottom: $arrow-margin-bottom;
+  }
+
+  &:after {
+    border-color: transparent;
+    border-bottom-color: $bg;
+    border-width: $size;
+    margin-left: -$size;
+  }
+  &:before {
+    right: $right;
+    left: $left;
+    border-color: transparent;
+    border-bottom-color: $border-color;
+    border-width: $size + 1;
+    margin-left: -($size + 1);
+  }
+
+  @if $left != auto {
+    &:after {
+      left: $left + 1;
+    }
+  }
+  @else {
+    &:after {
+      right: $right + 1;
+    }
+  }
+}
+
+@mixin clearfix() {
+  &:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+  }
+  & { display: inline-block; }
+  /* start commented backslash hack \*/
+  & { display: block; }
+  /* close commented backslash hack */
+}
+
+// Layout
+$xl-min: 1280px;
+$lg-max: ($xl-min - 1);
+$lg-min: 1024px;
+$md-max: ($lg-min - 1);
+$md-min: 768px;
+$sm-max: ($md-min - 1);
+$sm-min: 568px;
+
+@mixin breakpoint($size) {
+  @if $size == xl {
+    @media (min-width: $xl-min) { @content ; }
+  }
+  @else if $size == lg {
+    @media (min-width: $lg-min) { @content ; }
+  }
+  @else if $size == md {
+    @media (min-width: $md-min) { @content ; }
+  }
+  @else if $size == sm {
+    @media (min-width: $sm-min) { @content ; }
+  }
+}
+
+@mixin bp($size) {
+  @include breakpoint($size);
+}

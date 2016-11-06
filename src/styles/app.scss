@@ -1,0 +1,16 @@
+//
+// This file serves as the entrypoint to all styles
+//
+
+// Vendor
+@import 'vendor/pure-0.6.0.min';
+
+// Resets, defaults, vars
+@import 'helpers/_vars';
+@import 'helpers/_mixins';
+@import 'helpers/_typography';
+@import 'helpers/_spritesheets';
+@import 'helpers/_defaults';
+
+// pages
+@import 'pages/Page';

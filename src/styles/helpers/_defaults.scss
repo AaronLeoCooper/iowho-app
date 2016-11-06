@@ -1,0 +1,69 @@
+// Resets/defaults
+
+* {
+  box-sizing: border-box;
+}
+
+*,
+.pure-g [class *= "pure-u"] {
+  font-family: font(regular);
+}
+
+.pure-g > [class*="pure-u-"] {
+  // box-sizing: border-box;
+  // padding: 0 10px;
+  // margin: 0 10px;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+html,
+body {
+  position: relative;
+  display: block;
+}
+
+span {
+  font-family: inherit;
+  letter-spacing: inherit;
+}
+
+button {
+  border: 0;
+  outline: 0;
+}
+
+ul, li {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.wrap {
+  position: relative;
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+
+  @include bp(sm) {
+    width: $sm-min;
+  }
+
+  @include bp(md) {
+    width: $md-min;
+  }
+
+  @include bp(lg) {
+    width: $lg-min;
+  }
+
+  @include bp(xl) {
+    width: $xl-min;
+  }
+}

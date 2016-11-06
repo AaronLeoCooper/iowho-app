@@ -1,0 +1,4 @@
+{
+  "verbose": true,
+  "ignore": ["src/*", "dist/*", "api/1.0.0/__tests__"]
+}
