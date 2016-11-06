@@ -25,6 +25,14 @@ body {
   display: block;
 }
 
+html,
+body,
+input,
+textarea,
+select {
+  @include font(serif);
+}
+
 span {
   font-family: inherit;
   letter-spacing: inherit;

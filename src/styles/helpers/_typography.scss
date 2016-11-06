@@ -2,17 +2,23 @@
 
 // Defaults
 $fontsize-default: 16px;
-$fontweight-default: normal;
+$fontweight-default: 400;
 
-// @font-face {
-//   font-family: 'SC Sans Web bold';
-//   src: url(../fonts/sc-sans-web-bold.woff2);
-// }
+@font-face {
+  font-family: 'ABeeZee', sans-serif;
+  src: url(../fonts/ABeeZee-Regular.ttf);
+}
 
-$font-fallbacks: Helvetica, Arial, sans-serif;
+@font-face {
+  font-family: 'Antic Slab', serif;
+  src: url(../fonts/AnticSlab-Regular.ttf);
+}
 
-@mixin font($fonttype) {
-  @if $fonttype == 'light' {
-    font-family: $font-fallbacks;
+@mixin font($fonttype: 'serif') {
+  @if $fonttype == 'serif' {
+    font-family: 'Antic Slab', serif;
+  }
+  @else if $fonttype == 'sans' {
+    font-family: 'ABeeZee', sans-serif;
   }
 }

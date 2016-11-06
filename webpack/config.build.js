@@ -54,7 +54,7 @@ module.exports = {
   entry: `./${srcDir}/scripts/index.js`,
 
   resolve: {
-    extensions: ['', '.json', '.js']
+    extensions: ['', '.js']
   },
 
   output: {
@@ -65,11 +65,6 @@ module.exports = {
 
   module: {
     loaders: [
-      {
-        test: /\.json$/,
-        loader: 'json-loader',
-        include: [ path.join(root, srcDir, 'json'), path.join(root, 'node_modules/moment-timezone/data/packed') ]
-      },
       {
         test: /\.js$/,
         loader: 'babel',

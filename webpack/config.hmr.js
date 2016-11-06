@@ -48,16 +48,11 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['', '.json', '.js']
+    extensions: ['', '.js']
   },
 
   module: {
     loaders: [
-      {
-        test: /\.json$/,
-        loader: 'json-loader',
-        include: [ path.join(root, srcDir, 'json'), path.join(root, 'node_modules/moment-timezone/data/packed') ]
-      },
       {
         test: /\.js$/,
         loader: 'babel',
@@ -70,7 +65,7 @@ module.exports = {
         include: [ path.join(root, srcDir, 'styles') ]
       },
       { // HMR only:
-        test: /\.(png|jpg|gif|woff2)$/,
+        test: /\.(png|jpg|gif|woff2|ttf)$/,
         loader: 'url-loader',
         include: [ path.join(root, srcDir, 'images'), path.join(root, srcDir, 'fonts') ]
       }
