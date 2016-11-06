@@ -62,7 +62,7 @@ $md-min: 768px;
 $sm-max: ($md-min - 1);
 $sm-min: 568px;
 
-@mixin breakpoint($size) {
+@mixin bp($size) {
   @if $size == xl {
     @media (min-width: $xl-min) { @content ; }
   }
@@ -75,8 +75,4 @@ $sm-min: 568px;
   @else if $size == sm {
     @media (min-width: $sm-min) { @content ; }
   }
-}
-
-@mixin bp($size) {
-  @include breakpoint($size);
 }
