@@ -12,6 +12,9 @@
 @import 'helpers/_spritesheets';
 @import 'helpers/_defaults';
 
-// pages
+// Pages
 @import 'pages/Page';
 @import 'pages/HomePage';
+
+// Components
+@import 'components/IOweSwitcher';

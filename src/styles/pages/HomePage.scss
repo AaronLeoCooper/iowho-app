@@ -1,7 +1,6 @@
 .HomePage {
   .homepage-logo {
-    position: relative;
-    display: inline-block;
+    @include block(inline);
     margin-bottom: 20px;
   }
 

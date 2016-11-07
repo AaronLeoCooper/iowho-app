@@ -49,7 +49,7 @@ select {
   @include font(serif);
   font-weight: 100;
   font-size: $fontsize-default;
-  color: $color-navy-1;
+  color: $color-navy;
 }
 
 h1,
@@ -67,6 +67,14 @@ span {
 button {
   border: 0;
   outline: 0;
+  background-color: transparent;
+}
+
+input {
+  background: $color-white;
+  border: 0;
+  color: $color-navy-trans;
+  outline: none;
 }
 
 ul, li {

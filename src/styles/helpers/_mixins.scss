@@ -82,3 +82,41 @@ $sm-min: 568px;
   background: -webkit-radial-gradient(center, ellipse cover,  rgba($color,1) 0%,rgba($color,0) $spacing,rgba($color,0) 100%);
   background: radial-gradient(ellipse at center,  rgba($color,1) 0%,rgba($color,0) $spacing,rgba($color,0) 100%);
 }
+
+@mixin block($display: block) {
+  @if $display == absolute {
+    position: absolute;
+  }
+  @else if $display == inline or $display == inline-block {
+    position: relative;
+    display: inline-block;
+  }
+  @else {
+    position: relative;
+    display: block;
+  }
+}
+
+@mixin vert-center($position: absolute) {
+  position: $position;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@mixin placeholder($color) {
+  &::-webkit-input-placeholder {
+    color: $color;
+  }
+
+  &:-moz-placeholder { /* Firefox 18- */
+    color: $color;
+  }
+
+  &::-moz-placeholder {  /* Firefox 19+ */
+    color: $color;
+  }
+
+  &:-ms-input-placeholder {
+    color: $color;
+  }
+}

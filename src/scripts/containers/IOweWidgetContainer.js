@@ -20,7 +20,11 @@ IOweWidgetContainer.propTypes = {
   iOweThem: PropTypes.bool,
   name: PropTypes.string,
   amount: PropTypes.string,
-  currency: PropTypes.string
+  currency: PropTypes.string,
+  toggleIoOrder: PropTypes.func,
+  setIOweName: PropTypes.func,
+  setIOweAmount: PropTypes.func,
+  setIOweCurrency: PropTypes.func
 }
 
 const mapStateToProps = (state, ownProps) => {

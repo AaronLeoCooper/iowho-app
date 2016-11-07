@@ -1,0 +1,67 @@
+$ioweswitcher-height: 50px;
+$ioweswitcher-button-size: 40px;
+$ioweswitcher-middle-offset: 40px;
+
+.IOweSwitcher {
+  @include block;
+  text-align: center;
+  height: $ioweswitcher-height;
+
+  .ioweswitcher-text-iowe,
+  .ioweswitcher-text-input {
+    position: absolute;
+    top: 50%;
+    font-size: 2rem;
+  }
+
+  .ioweswitcher-text-iowe {
+    left: 50%;
+    transform: translate($ioweswitcher-middle-offset, -50%);
+  }
+
+  .ioweswitcher-text-input {
+    right: 50%;
+    transform: translate(-$ioweswitcher-middle-offset, -50%);
+    width: 200px;
+    background: transparent;
+    text-align: right;
+    /*text-decoration: underline;*/
+    color: $color-turquoise;
+    @include placeholder($color-turquoise-trans);
+
+    /*&:focus {
+      border-top: solid 2px transparent;
+      border-bottom: solid 2px $color-navy;
+    }*/
+  }
+
+  .ioweswitcher-button {
+    position: absolute;
+    transform: translateY(-50%);
+    top: 50%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: $ioweswitcher-button-size;
+    height: $ioweswitcher-button-size;
+    background-image: url(../images/circle.svg);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+
+  &.iowethem {
+    .ioweswitcher-text-iowe {
+      left: auto;
+      right: 50%;
+      transform: translate(-$ioweswitcher-middle-offset, -50%);
+    }
+
+    .ioweswitcher-text-input {
+      right: auto;
+      left: 50%;
+      transform: translate($ioweswitcher-middle-offset, -50%);
+      text-align: left;
+    }
+  }
+}

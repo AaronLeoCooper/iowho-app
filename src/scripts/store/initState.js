@@ -6,5 +6,5 @@ export const IOweWidget = () => ({
   iOweThem: true,
   name: '',
   amount: '',
-  currency: ''
+  currency: '$'
 })

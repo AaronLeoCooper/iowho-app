@@ -1,5 +1,4 @@
 .Page {
-  position: relative;
-  display: block;
+  @include block;
   text-align: center;
 }

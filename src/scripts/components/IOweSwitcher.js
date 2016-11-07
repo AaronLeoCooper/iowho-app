@@ -1,23 +1,43 @@
-import React, { PropTypes } from 'React'
+import React, { Component, PropTypes } from 'react'
+import classnames from 'classnames'
+import { debounce } from 'lodash'
 
-const IOweSwitcher = ({ defaultValue, onChange, onSwitch }) => {
-  return (
-    <div className='IOweSwitcher'>
-      <span className='ioweswitcher-io'>i owe</span>
-      <button onClick={onSwitch}></button>
-      <input
-        className='ioweswitcher-input'
-        type='text'
-        onChange={onChange}
-        defaultValue={defaultValue} />
-    </div>
-  )
+class IOweSwitcher extends Component {
+  constructor(props) {
+    super(props)
+
+    this.setIOweName = debounce(this.setIOweName, 200)
+  }
+
+  debounceOnChange = (e) => {
+    this.setIOweName(e.target.value)
+  }
+
+  setIOweName = (val) => {
+    this.props.setIOweName(val)
+  }
+
+  render () {
+    return (
+      <div className={classnames('IOweSwitcher', { 'iowethem': this.props.iOweThem })}>
+        <span className='ioweswitcher-text-iowe'>{ this.props.iOweThem ? 'i owe' : 'owes me' }</span>
+        <input
+          className='ioweswitcher-text-input'
+          type='text'
+          onChange={this.debounceOnChange}
+          defaultValue={this.props.name}
+          placeholder='who?' />
+        <button className='ioweswitcher-button' onClick={this.props.toggleIoOrder} />
+      </div>
+    )
+  }
 }
 
 IOweSwitcher.propTypes = {
-  defaultValue: PropTypes.string,
-  onChange: PropTypes.func,
-  onSwitch: PropTypes.func
+  name: PropTypes.string,
+  iOweThem: PropTypes.bool,
+  setIOweName: PropTypes.func,
+  toggleIoOrder: PropTypes.func
 }
 
 export default IOweSwitcher
