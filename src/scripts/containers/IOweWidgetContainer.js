@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 
 import * as actionCreators from '../store/redux/IOweWidget'
 import IOweSwitcher from '../components/IOweSwitcher'
+import StyledInput from '../components/StyledInput'
 
 class IOweWidgetContainer extends Component {
 
@@ -11,6 +12,7 @@ class IOweWidgetContainer extends Component {
     return (
       <div>
         <IOweSwitcher {...this.props} />
+        <StyledInput className='input' />
       </div>
     )
   }
