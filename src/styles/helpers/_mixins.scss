@@ -86,6 +86,7 @@ $sm-min: 568px;
 @mixin block($display: block) {
   @if $display == absolute {
     position: absolute;
+    display: block;
   }
   @else if $display == inline or $display == inline-block {
     position: relative;

@@ -12,6 +12,7 @@ $ioweswitcher-middle-offset: 40px;
     position: absolute;
     top: 50%;
     font-size: 2rem;
+    transition: transform .2s ease;
   }
 
   .ioweswitcher-text-iowe {
@@ -37,7 +38,7 @@ $ioweswitcher-middle-offset: 40px;
 
   .ioweswitcher-button {
     position: absolute;
-    transform: translateY(-50%);
+    transform: translateY(-50%) rotate(0deg);
     top: 50%;
     left: 0;
     right: 0;
@@ -48,6 +49,7 @@ $ioweswitcher-middle-offset: 40px;
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
+    transition: transform .2s ease;
   }
 
   &.iowethem {
@@ -62,6 +64,10 @@ $ioweswitcher-middle-offset: 40px;
       left: 50%;
       transform: translate($ioweswitcher-middle-offset, -50%);
       text-align: left;
+    }
+
+    .ioweswitcher-button {
+      transform: translateY(-50%) rotate(180deg);
     }
   }
 }

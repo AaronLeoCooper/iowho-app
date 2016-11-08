@@ -10,9 +10,20 @@ class IOweWidgetContainer extends Component {
 
   render () {
     return (
-      <div>
+      <div className='IOweWidgetContainer'>
         <IOweSwitcher {...this.props} />
-        <StyledInput className='input' />
+        <StyledInput
+          className='iowewidgetcontainer-styledinput'
+          left={{ label: (
+            <span className='iowewidgetcontainer-styledinput-'>
+              {this.props.currency}
+            </span>
+          )}}
+          right={{ label: (
+            <button className='iowewidgetcontainer-styledinput-button'>
+              <img className='iowewidgetcontainer-styledinput-arrow' src={`${process.env.ASSETS}/images/arrow.svg`} />
+            </button>
+          ) }} />
       </div>
     )
   }

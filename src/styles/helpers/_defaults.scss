@@ -4,17 +4,6 @@
   box-sizing: border-box;
 }
 
-*,
-.pure-g [class *= "pure-u"] {
-  font-family: font(regular);
-}
-
-.pure-g > [class*="pure-u-"] {
-  // box-sizing: border-box;
-  // padding: 0 10px;
-  // margin: 0 10px;
-}
-
 html {
   overflow-x: hidden;
 }
@@ -45,7 +34,8 @@ html,
 body,
 input,
 textarea,
-select {
+select,
+.pure-g [class *= "pure-u"] {
   @include font(serif);
   font-weight: 100;
   font-size: $fontsize-default;

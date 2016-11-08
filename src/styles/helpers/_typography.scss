@@ -5,20 +5,20 @@ $fontsize-default: 16px;
 $fontweight-default: 100;
 
 @font-face {
-  font-family: 'ABeeZee', sans-serif;
+  font-family: ABeeZee;
   src: url(../fonts/ABeeZee-Regular.ttf);
 }
 
 @font-face {
-  font-family: 'Antic Slab', serif;
+  font-family: AnticSlab;
   src: url(../fonts/AnticSlab-Regular.ttf);
 }
 
 @mixin font($fonttype: 'serif') {
   @if $fonttype == 'serif' {
-    font-family: 'Antic Slab', serif;
+    font-family: AnticSlab, serif;
   }
   @else if $fonttype == 'sans' {
-    font-family: 'ABeeZee', sans-serif;
+    font-family: ABeeZee, sans-serif;
   }
 }
