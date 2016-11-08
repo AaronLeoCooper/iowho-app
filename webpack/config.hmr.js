@@ -13,12 +13,13 @@ const webpack = require('webpack')
 const root = path.join(__dirname, '../')
 const srcDir = 'src'
 const outputDir = 'dist/development/assets/scripts'
+const port = process.env.PORT || 3000
 
 const webpackEnv = new webpack.DefinePlugin({
   'process.env': {
     'NODE_ENV': JSON.stringify('development'),
     'HMR': JSON.stringify(true),
-    'ASSETS': JSON.stringify('http://localhost:3000')
+    'ASSETS': JSON.stringify(`http://localhost:${port}`)
   }
 })
 
@@ -36,7 +37,7 @@ module.exports = {
 
   entry: [
     'react-hot-loader/patch',
-    'webpack-dev-server/client?http://localhost:3000', // HMR only
+    `webpack-dev-server/client?http://localhost:${port}`, // HMR only
     'webpack/hot/only-dev-server',
     `./${srcDir}/scripts/index.js`
   ],
@@ -78,7 +79,7 @@ module.exports = {
     colors: true,
     historyApiFallback: true,
     inline: true,
-    port: 3000,
+    port: port,
     hot: true,
     contentBase: `./${srcDir}`
   }

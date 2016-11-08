@@ -9,17 +9,18 @@
 const webpack = require('webpack')
 const WebpackDevServer = require('webpack-dev-server')
 const config = require('./webpack/config.hmr')
+const port = process.env.PORT || 3000
 
 new WebpackDevServer(webpack(config), {
   colors: true,
   historyApiFallback: true,
-  port: 3000,
+  port: port,
   hot: true,
   publicPath: config.output.publicPath
-}).listen(3000, 'localhost', function (err, result) {
+}).listen(port, 'localhost', function (err, result) {
   if (err) {
     return console.error(err)
   }
 
-  console.log('Listening at localhost:3000, go to: http://localhost:3000/webpack-dev-server/dist/development/index.html')
+  console.log(`Listening at localhost:${port}, go to: http://localhost:${port}/webpack-dev-server/dist/development/index.html`)
 })
