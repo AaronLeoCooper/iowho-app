@@ -121,3 +121,7 @@ $sm-min: 568px;
     color: $color;
   }
 }
+
+@mixin shadow($depth: 1) {
+  box-shadow: 0 2px (2px * ($depth * 2)) ($depth - 1 + px) rgba($color-black, .22);
+}

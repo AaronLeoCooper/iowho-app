@@ -9,12 +9,20 @@
     @include block(inline);
   }
 
-  .iowewidgetcontainer-styledinput-button {
+  .iowewidgetcontainer-styledinput-currency-button,
+  .iowewidgetcontainer-styledinput-submit-button {
+    @include block;
     width: 100%;
     height: 100%;
   }
 
+  .iowewidgetcontainer-styledinput-currency-button {
+  }
+
+  .iowewidgetcontainer-styledinput-submit-button {
+  }
+
   .iowewidgetcontainer-styledinput-arrow {
-    width: 24px;
+    width: 16px;
   }
 }

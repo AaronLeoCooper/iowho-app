@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import classnames from 'classnames'
 
-function StyledInput ({ className, left, right }) {
+function StyledInput ({ placeholder, className, defaultValue, left, right, onChange }) {
   const leftEl = left.label
     ? <span className='styledinput-block styledinput-left'>{left.label}</span>
     : null
@@ -21,22 +21,28 @@ function StyledInput ({ className, left, right }) {
   return (
     <div className={wrapperClasses}>
       {leftEl}
-      <input className={inputClasses} />
+      <input className={inputClasses} placeholder={placeholder} onChange={onChange} defaultValue={defaultValue} />
       {rightEl}
     </div>
   )
 }
 
 StyledInput.propTypes = {
+  placeholder: PropTypes.string,
   className: PropTypes.string,
+  defaultValue: PropTypes.string,
   left: PropTypes.object,
-  right: PropTypes.object
+  right: PropTypes.object,
+  onChange: PropTypes.func
 }
 
 StyledInput.defaultProps = {
+  placeholder: '',
   className: '',
+  defaultValue: '',
   left: {},
-  right: {}
+  right: {},
+  onChange: () => null
 }
 
 export default StyledInput

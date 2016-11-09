@@ -1,0 +1,41 @@
+$styledselect-width: 50px;
+
+.StyledSelect {
+  @include block;
+  width: $styledselect-width;
+  height: 100%;
+
+  .styledselect-button {
+    @include block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .styledselect-items {
+    @include block(absolute);
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background: $color-white;
+    border-radius: 3px;
+    overflow: hidden;
+    @include shadow(2);
+    display: none;
+
+    &.is-open {
+      display: block;
+    }
+  }
+
+  .styledselect-item {
+    @include block;
+    width: 100%;
+    padding: 10px 0;
+
+    &.active {
+      background: $color-navy-trans-2;
+    }
+  }
+
+}

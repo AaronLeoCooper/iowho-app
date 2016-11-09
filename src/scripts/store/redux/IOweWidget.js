@@ -15,7 +15,15 @@ export const toggleIoOrder = (iOweThem = undefined) => {
 
 export const setIOweName = (name = '') => ({ type: C.SET_IOWE_NAME, payload: name })
 export const setIOweAmount = (amount = '') => ({ type: C.SET_IOWE_AMOUNT, payload: amount })
-export const setIOweCurrency = (currency = '') => ({ type: C.SET_IOWE_CURRENCY, payload: currency })
+export const setIOweCurrency = (currencyKey = undefined) => {
+  return (dispatch, getState) => {
+    if (typeof currencyKey === 'undefined') {
+      currencyKey = getInitState().IOweWidget.currencyKey
+    }
+
+    dispatch({ type: C.SET_IOWE_CURRENCY, payload: currencyKey })
+  }
+}
 
 // Reducer
 export default (state = getInitState(), action) => {
@@ -30,7 +38,7 @@ export default (state = getInitState(), action) => {
       return { ...state, amount: action.payload }
 
     case C.SET_IOWE_CURRENCY:
-      return { ...state, currency: action.payload }
+      return { ...state, currencyKey: action.payload }
 
     default: return state
   }

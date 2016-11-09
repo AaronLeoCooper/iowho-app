@@ -57,14 +57,16 @@ span {
 button {
   border: 0;
   outline: 0;
+  padding: 0;
   background-color: transparent;
 }
 
 input {
-  background: $color-white;
   border: 0;
-  color: $color-navy-trans;
   outline: none;
+  background: $color-white;
+  color: $color-navy;
+  @include placeholder($color-navy-trans);
 }
 
 ul, li {
