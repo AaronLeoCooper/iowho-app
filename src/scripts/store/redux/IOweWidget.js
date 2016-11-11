@@ -42,13 +42,16 @@ export const createOwe = (owe = {}) => {
 }
 
 export const removeOwe = (oweId = undefined) => {
-  if (parseInt(oweId).toString() === 'NaN') return
+  oweId = parseInt(oweId)
+
+  if (oweId.toString() === 'NaN') return // Reject NaN IDs
 
   return (dispatch, getState) => {
     const state = getState().IOweWidget
     const owes = state.owes
       .filter(owe => owe.id !== oweId)
       .map(owe => {
+        console.log('looping owes', owe)
         if (owe.id > oweId) {
           owe.id -= 1
         }

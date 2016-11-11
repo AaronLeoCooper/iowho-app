@@ -1,0 +1,35 @@
+$oweitem-ctas-width: 40px;
+$oweitem-ctas-icon-size: 40px;
+
+.OweItem {
+  @include block;
+
+  .oweitem-content {
+    @include block;
+    @include font(serif);
+    margin-right: $oweitem-ctas-width;
+    font-size: 1.5rem;
+  }
+
+  .oweitem-content-segment {
+    @include block(inline);
+    margin: 0 5px;
+  }
+
+  .oweitem-ctas {
+    @include block(absolute);
+    width: $oweitem-ctas-width;
+    top: 0;
+    right: 0;
+  }
+
+  .oweitem-ctas-remove {
+    @include block(inline);
+  }
+
+  .oweitem-ctas-remove-icon {
+    @include block;
+    pointer-events: none;
+    width: $oweitem-ctas-icon-size;
+  }
+}
