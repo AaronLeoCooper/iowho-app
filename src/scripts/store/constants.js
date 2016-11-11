@@ -7,5 +7,6 @@ export const IOweWidget = {
   SET_NAME: 'IOWidget__SET_NAME',
   SET_AMOUNT: 'IOWidget__SET_AMOUNT',
   SET_CURRENCY: 'IOWidget__SET_CURRENCY',
-  CREATE_OWE: 'IOWidget__CREATE_OWE'
+  CREATE_OWE: 'IOWidget__CREATE_OWE',
+  REMOVE_OWE: 'IOWidget__REMOVE_OWE'
 }

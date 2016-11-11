@@ -1,5 +1,6 @@
 .IOweWidgetContainer {
   @include block;
+  margin-bottom: $gap-3;
 
   .iowewidgetcontainer-styledinput-wrap {
     text-align: center;

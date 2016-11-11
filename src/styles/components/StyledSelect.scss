@@ -18,7 +18,7 @@ $styledselect-width: 50px;
     top: 50%;
     transform: translateY(-50%);
     background: $color-white;
-    border-radius: 3px;
+    border-radius: $nice-radius;
     overflow: hidden;
     @include shadow(2);
     display: none;

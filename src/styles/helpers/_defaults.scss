@@ -106,3 +106,31 @@ a {
   position: relative;
   display: block;
 }
+
+.cta {
+  @include block(inline);
+  @include shadow;
+  @include font(sans);
+  @include padding;
+  border-radius: $nice-radius;
+  background: $color-white;
+  font-size: 1.4rem;
+
+  &.cta-green,
+  &.cta-turquoise,
+  &.cta-navy {
+    color: $color-white;
+  }
+
+  &.cta-green {
+    background: $color-green;
+  }
+
+  &.cta-turquoise {
+    background: $color-turquoise;
+  }
+
+  &.cta-navy {
+    background: $color-navy;
+  }
+}

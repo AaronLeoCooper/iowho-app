@@ -1,7 +1,7 @@
 .HomePage {
   .homepage-logo {
     @include block(inline);
-    margin-bottom: 30px;
+    margin-bottom: $gap-2;
   }
 
   .homepage-logo-img,
@@ -12,7 +12,7 @@
 
   .homepage-logo-img {
     width: 150px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
   }
 
   .homepage-logo-text {

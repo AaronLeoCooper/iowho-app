@@ -1,0 +1,27 @@
+$badge-size: 24px;
+
+.ContextualButton {
+  @include block(inline);
+
+  .contextualbutton-badge {
+    @include block(absolute);
+    @include shadow(2);
+    width: $badge-size;
+    height: $badge-size;
+    background-color: $color-navy;
+    top: 0;
+    right: 0;
+    transform: translate($badge-size / 2, -($badge-size / 2));
+    border-radius: $badge-size;
+    text-align: center;
+
+    > * {
+      @include block(absolute);
+      text-align: center;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: .75rem;
+    }
+  }
+}

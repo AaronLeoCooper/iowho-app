@@ -30,24 +30,48 @@ export const createOwe = (owe = {}) => {
   return (dispatch, getState) => {
     const state = getState().IOweWidget
     const owe = {
+      id: state.owes.length,
       iOweThem: state.iOweThem,
       name: state.name,
       amount: state.amount,
       currency: getCurrency(state)
     }
+
     dispatch({ type: C.CREATE_OWE, payload: owe })
+  }
+}
+
+export const removeOwe = (oweId = undefined) => {
+  if (parseInt(oweId).toString() === 'NaN') return
+
+  return (dispatch, getState) => {
+    const state = getState().IOweWidget
+    const owes = state.owes
+      .filter(owe => owe.id !== oweId)
+      .map(owe => {
+        if (owe.id > oweId) {
+          owe.id -= 1
+        }
+        return owe
+      })
+
+    dispatch({ type: C.REMOVE_OWE, payload: owes })
   }
 }
 
 // Selectors
 const getCurrenciesList = (state) => state.currenciesList
 const getCurrencyKey = (state) => state.currencyKey
+const getOwes = (state) => state.owes
 
 export const getCurrency = createSelector(
   [ getCurrenciesList, getCurrencyKey ],
-  (currenciesList, currencyKey) => {
-    return currenciesList[currencyKey]
-  }
+  (currenciesList, currencyKey) => currenciesList[currencyKey]
+)
+
+export const getOwesCount = createSelector(
+  [ getOwes ],
+  (owes) => owes.length
 )
 
 // Reducer
@@ -67,6 +91,9 @@ export default (state = getInitState(), action) => {
 
     case C.CREATE_OWE:
       return { ...state, owes: [ ...state.owes, action.payload ] }
+
+    case C.REMOVE_OWE:
+      return { ...state, owes: action.payload }
 
     default: return state
   }

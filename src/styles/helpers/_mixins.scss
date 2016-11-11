@@ -123,5 +123,25 @@ $sm-min: 568px;
 }
 
 @mixin shadow($depth: 1) {
-  box-shadow: 0 2px (2px * ($depth * 2)) ($depth - 1 + px) rgba($color-black, .22);
+  $baseline-blur: 1px;
+
+  box-shadow: 0 2px ($baseline-blur * ($depth * 2)) ($depth - 1 + px) rgba($color-black, .15);
+}
+
+@mixin padding($top-or-topbottom-or-all: 1, $bottom-or-sides: null, $left: null, $right: null) {
+  $baseline-topbottom: .5;
+  $baseline-sides: .75;
+
+  @if $bottom-or-sides == null {
+    // Multiply all proportions by $top-or-topbottom-or-all
+    padding: ($baseline-topbottom * $top-or-topbottom-or-all)+em ($baseline-sides * $top-or-topbottom-or-all)+em;
+  }
+  @else if $left == null {
+    // Multiply top/bottom by $top-or-topbottom-or-all & left/right by $bottom-or-sides
+    padding: ($baseline-topbottom * $top-or-topbottom-or-all)+em ($baseline-sides * $bottom-or-sides)+em;
+  }
+  @else {
+    // Multiply each of the 4 dimensions individually based upon all parameters respectively
+    padding: ($baseline-topbottom * $top-or-topbottom-or-all)+em ($right * $baseline-sides)+em ($baseline-topbottom * $bottom-or-sides)+em ($left * $baseline-sides)+em;
+  }
 }

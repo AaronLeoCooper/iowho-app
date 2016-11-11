@@ -6,7 +6,7 @@ $ioweswitcher-middle-offset: 40px;
   @include block;
   text-align: center;
   height: $ioweswitcher-height;
-  margin-bottom: 20px;
+  margin-bottom: $gap-1;
 
   .ioweswitcher-text-iowe,
   .ioweswitcher-text-input {

@@ -3,17 +3,17 @@ $side-block-width: 50px;
 
 .StyledInput {
   @include block;
+  @include shadow;
   font-size: 1.5rem;
   width: $total-input-width;
-  border-radius: 3px;
+  border-radius: $nice-radius;
   background-color: $color-white;
-  @include shadow;
 
   .styledinput-input {
     @include block(inline);
-    @include font(sans);
+    @include font(serif);
+    @include padding;
     background: transparent;
-    padding: 10px 16px;
     font-size: inherit;
 
     &.has-left-block,
@@ -47,11 +47,15 @@ $side-block-width: 50px;
   .styledinput-left {
     background: $color-navy-trans-2;
     left: 0;
+    border-top-left-radius: $nice-radius;
+    border-bottom-left-radius: $nice-radius;
   }
 
   .styledinput-right {
     background: $color-green;
     color: $color-white;
     right: 0;
+    border-top-right-radius: $nice-radius;
+    border-bottom-right-radius: $nice-radius;
   }
 }
