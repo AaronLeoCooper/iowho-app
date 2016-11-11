@@ -1,18 +1,8 @@
 import React, { Component, PropTypes } from 'react'
 import classnames from 'classnames'
-import { debounce } from 'lodash'
+import PerformantInput from './PerformantInput'
 
 class IOweSwitcher extends Component {
-  constructor(props) {
-    super(props)
-
-    this.setIOweName = debounce(this.setIOweName, 200)
-  }
-
-  debounceOnChange = (e) => {
-    this.setIOweName(e.target.value)
-  }
-
   setIOweName = (val) => {
     this.props.setIOweName(val)
   }
@@ -21,10 +11,10 @@ class IOweSwitcher extends Component {
     return (
       <div className={classnames('IOweSwitcher', { 'iowethem': this.props.iOweThem })}>
         <span className='ioweswitcher-text-iowe'>{ this.props.iOweThem ? 'i owe' : 'owes me' }</span>
-        <input
+        <PerformantInput
           className='ioweswitcher-text-input'
           type='text'
-          onChange={this.debounceOnChange}
+          onChange={this.props.setIOweName}
           defaultValue={this.props.name}
           placeholder='who?' />
         <button className='ioweswitcher-button' onClick={this.props.toggleIoOrder} />

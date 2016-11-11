@@ -5,7 +5,7 @@ import IOweWidgetContainer from '../containers/IOweWidgetContainer'
 
 function HomePage () {
   return (
-    <Page title='Home'>
+    <Page className='HomePage'>
       <h1 className='homepage-logo'>
         <img className='homepage-logo-img' src={`${process.env.ASSETS}/images/iowho-logo.svg`} alt='IOWho Logo' />
         <span className='homepage-logo-text'>The blissfully simple money lending tracker</span>

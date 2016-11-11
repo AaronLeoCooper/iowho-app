@@ -7,7 +7,10 @@ class App extends Component {
       <div>
         <Helmet
           titleTemplate='%sIOWho?'
-          defaultTitle='Simple Money Lendings Tracker'
+          defaultTitle='IOWho - The blissfully simple money lending tracker'
+          meta={[
+            { name: 'description', content: 'The blissfully simple money lending tracker' }
+          ]}
         />
         {this.props.children}
       </div>

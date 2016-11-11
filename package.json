@@ -84,6 +84,7 @@
     "redux": "^3.6.0",
     "redux-logger": "^2.7.0",
     "redux-thunk": "^2.1.0",
+    "reselect": "^2.5.4",
     "run-sequence": "^1.2.2",
     "webpack": "^1.13.2",
     "webpack-strip": "^0.1.0"

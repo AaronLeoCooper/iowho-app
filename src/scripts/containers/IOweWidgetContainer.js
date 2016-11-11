@@ -8,24 +8,29 @@ import StyledSelect from '../components/StyledSelect'
 
 class IOweWidgetContainer extends Component {
   render () {
+    const currencySelect = (
+      <StyledSelect
+        name='iowidget-currency-select'
+        className='iowewidgetcontainer-styledinput-currency-button'
+        selectedValue={this.props.currency}
+        items={this.props.currenciesList}
+        onChange={this.props.setIOweCurrency} />
+    )
+
+    const submitButton = (
+      <button className='iowewidgetcontainer-styledinput-submit-button' onClick={this.props.createOwe}>
+        <img className='iowewidgetcontainer-styledinput-arrow' src={`${process.env.ASSETS}/images/arrow.svg`} />
+      </button>
+    )
+
     return (
       <div className='IOweWidgetContainer'>
         <IOweSwitcher {...this.props} />
         <StyledInput
           className='iowewidgetcontainer-styledinput'
-          left={{ label: (
-            <StyledSelect
-              name='iowidget-currency-select'
-              className='iowewidgetcontainer-styledinput-currency-button'
-              selectedValue={this.props.currenciesList[this.props.currencyKey]}
-              items={this.props.currenciesList}
-              onChange={this.props.setIOweCurrency} />
-          )}}
-          right={{ label: (
-            <button className='iowewidgetcontainer-styledinput-submit-button'>
-              <img className='iowewidgetcontainer-styledinput-arrow' src={`${process.env.ASSETS}/images/arrow.svg`} />
-            </button>
-          ) }} />
+          left={{ label: currencySelect }}
+          right={{ label: submitButton }}
+          onChange={this.props.setIOweAmount} />
       </div>
     )
   }
@@ -37,14 +42,19 @@ IOweWidgetContainer.propTypes = {
   amount: PropTypes.string,
   currenciesList: PropTypes.array,
   currencyKey: PropTypes.number,
+  currency: PropTypes.string,
   toggleIoOrder: PropTypes.func,
   setIOweName: PropTypes.func,
   setIOweAmount: PropTypes.func,
-  setIOweCurrency: PropTypes.func
+  setIOweCurrency: PropTypes.func,
+  createOwe: PropTypes.func
 }
 
 const mapStateToProps = (state, ownProps) => {
-  return { ...state.IOweWidget }
+  return {
+    ...state.IOweWidget,
+    currency: actionCreators.getCurrency(state.IOweWidget)
+  }
 }
 
 export default connect(
