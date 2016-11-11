@@ -10,8 +10,7 @@ html {
 
 html,
 body {
-  position: relative;
-  display: block;
+  @include block;
   line-height: 1.6rem;
 }
 
@@ -83,6 +82,7 @@ a {
   position: relative;
   display: block;
   margin: 0 auto;
+  padding: 0 15px;
   width: 100%;
 
   @include bp(sm) {

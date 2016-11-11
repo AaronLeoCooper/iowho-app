@@ -4,7 +4,7 @@ import Helmet from 'react-helmet'
 class App extends Component {
   render () {
     return (
-      <div>
+      <div className='App'>
         <Helmet
           titleTemplate='%sIOWho?'
           defaultTitle='IOWho - The blissfully simple money lending tracker'
@@ -19,10 +19,6 @@ class App extends Component {
 }
 
 App.propTypes = {
-  children: PropTypes.element
-}
-
-App.defaultProps = {
   children: PropTypes.element
 }
 

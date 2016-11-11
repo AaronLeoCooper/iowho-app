@@ -1,16 +1,19 @@
 .ListPage {
-  @include block;
-
   h1 {
     margin-top: $gap-2;
     margin-bottom: $gap-2;
   }
 
-  .listpage-owelist {
+  .listpage-content {
     @include block;
-    margin: 0 auto;
     margin-bottom: $gap-3;
-    max-width: 768px;
+  }
+
+  .listpage-owelist {
+    @include block(inline);
+    background-color: $color-white;
+    border-radius: $nice-radius;
+    @include shadow;
   }
 
   .listpage-owelist-emptymsg {

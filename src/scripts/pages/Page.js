@@ -10,7 +10,7 @@ class Page extends Component {
 
     let pageClasses = classnames(
       'Page',
-      this.props.title ? `${this.props.title.split(' ').join('')}Page` : '',
+      this.props.title ? `${this.props.title.replace(/\W/g, '')}Page` : '',
       this.props.className
     )
 
@@ -21,7 +21,14 @@ class Page extends Component {
     return (
       <div className={pageClasses}>
         <Helmet title={pageTitle} meta={meta} />
-        {this.props.children}
+        <div className='page-content wrap'>
+          {this.props.children}
+        </div>
+        <div className='footer'>
+          <div className='footer-msg'>
+            Created with <em>❤</em> by <a href='http://www.alcooper.me'>Aaron Leo Cooper</a>
+          </div>
+        </div>
       </div>
     )
   }

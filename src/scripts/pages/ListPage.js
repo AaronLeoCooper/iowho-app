@@ -14,13 +14,17 @@ class ListPage extends Component {
     })
 
     const content = owes.length > 0
-      ? owes
+      ? (
+        <div className='listpage-owelist'>
+          {owes}
+        </div>
+      )
       : <div className='listpage-owelist-emptymsg'>Grats, you have no owes!</div>
 
     return (
       <Page className='ListPage' title='Who Owes What?'>
         <h1>Who Owes What?</h1>
-        <div className='listpage-owelist'>
+        <div className='listpage-content'>
           {content}
         </div>
         <Link to={paths.Index} className='cta cta-turquoise'>Add a new Owe</Link>

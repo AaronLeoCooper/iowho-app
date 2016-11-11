@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import classnames from 'classnames'
 
 class StyledSelect extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
 
     this.state = { isOpen: false }
