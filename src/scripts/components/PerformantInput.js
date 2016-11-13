@@ -35,6 +35,7 @@ class PerformantInput extends Component {
         className={this.props.className}
         type={this.props.type}
         onChange={this.onChange}
+        onKeyPress={this.props.onKeyPress}
         value={this.state.value}
         placeholder={this.props.placeholder}
         tabIndex={this.props.tabIndex} />
@@ -44,6 +45,7 @@ class PerformantInput extends Component {
 
 PerformantInput.propTypes = {
   onChange: PropTypes.func,
+  onKeyPress: PropTypes.func,
   className: PropTypes.string,
   type: PropTypes.string,
   value: PropTypes.string,
@@ -55,6 +57,7 @@ PerformantInput.propTypes = {
 
 PerformantInput.defaultProps = {
   onChange: noop,
+  onKeyPress: noop,
   className: '',
   type: '',
   value: '',

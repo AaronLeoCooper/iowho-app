@@ -28,16 +28,18 @@ export const setIOweCurrency = (currencyKey = undefined) => {
   }
 }
 
-export const createOwe = (owe = {}) => {
+export const createOwe = () => {
   return (dispatch, getState) => {
     const state = getState().IOweWidget
     const owe = {
       id: state.owes.length,
-      iOweThem: state.iOweThem,
-      name: state.name,
-      amount: state.amount,
+      iOweThem: !!state.iOweThem,
+      name: state.name || '',
+      amount: state.amount || '',
       currency: getCurrency(state)
     }
+
+    console.log('owe', owe)
 
     // Only create new owe if it passes validation
     const validOwe = validateOwe(owe)
@@ -126,12 +128,6 @@ export default (state = getInitState(), action) => {
 
     case C.REMOVE_OWE:
       return { ...state, owes: action.payload }
-
-    case C.CREATE_ERROR:
-      return { ...state, error: action.payload }
-
-    case C.CLEAR_ERROR:
-      return { ...state, error: initState.error }
 
     case C.CLEAR_ALL:
     case C_App.CLEAR_ALL:

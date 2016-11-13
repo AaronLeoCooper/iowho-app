@@ -7,6 +7,12 @@ import StyledInput from '../components/StyledInput'
 import StyledSelect from '../components/StyledSelect'
 
 class IOweWidgetContainer extends Component {
+  onKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      this.props.createOwe()
+    }
+  }
+
   render () {
     const currencySelect = (
       <StyledSelect
@@ -26,6 +32,8 @@ class IOweWidgetContainer extends Component {
       </button>
     )
 
+    console.log('this.props.ErrorState', this.props.ErrorState)
+
     const errorMsg = this.props.ErrorState.hasError && this.props.ErrorState.key === 'amount'
       ? this.props.ErrorState.message
       : ''
@@ -38,6 +46,7 @@ class IOweWidgetContainer extends Component {
           left={{ label: currencySelect }}
           right={{ label: submitButton }}
           onChange={this.props.setIOweAmount}
+          onKeyPress={this.onKeyPress}
           value={this.props.amount}
           errorMsg={errorMsg}
           tabIndex='2' />
@@ -53,7 +62,6 @@ IOweWidgetContainer.propTypes = {
   currenciesList: PropTypes.array,
   currencyKey: PropTypes.number,
   currency: PropTypes.string,
-  error: PropTypes.object,
   toggleIoOrder: PropTypes.func,
   setIOweName: PropTypes.func,
   setIOweAmount: PropTypes.func,

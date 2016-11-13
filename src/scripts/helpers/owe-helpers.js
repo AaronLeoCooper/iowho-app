@@ -1,8 +1,8 @@
-const validateStr = (content) => `${content}`.length > 0
-const validateNumber = (content) => parseInt(content).toString() !== 'NaN' && parseInt(content) >= 0
+const validateStr = (content) => typeof content !== 'undefined' && `${content}`.length > 0
+const validateNumber = (content) => typeof content !== 'undefined' && parseInt(content).toString() !== 'NaN' && parseInt(content) >= 0
 const validateBool = (content) => typeof content === 'boolean'
 const validateObj = (content) => typeof content === 'object'
-const validateArr = (content) => Array.isArray(content)
+const validateArr = (content) => typeof content !== 'undefined' && Array.isArray(content)
 
 const validationRules = {
   id: undefined,

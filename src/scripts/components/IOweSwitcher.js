@@ -9,8 +9,8 @@ class IOweSwitcher extends Component {
   }
 
   render () {
-    const errorEl = this.props.error.hasError && this.props.error.key === 'name'
-      ? <span className='error-msg iowswitcher-input-error'>{this.props.error.message}</span>
+    const errorEl = this.props.ErrorState.hasError && this.props.ErrorState.key === 'name'
+      ? <span className='error-msg iowswitcher-input-error'>{this.props.ErrorState.message}</span>
       : null
 
     return (
@@ -33,7 +33,7 @@ class IOweSwitcher extends Component {
 IOweSwitcher.propTypes = {
   name: PropTypes.string,
   iOweThem: PropTypes.bool,
-  error: PropTypes.object,
+  ErrorState: PropTypes.object,
   setIOweName: PropTypes.func,
   toggleIoOrder: PropTypes.func
 }
@@ -41,7 +41,7 @@ IOweSwitcher.propTypes = {
 IOweSwitcher.defaultProps = {
   name: '',
   iOweThem: true,
-  error: {},
+  ErrorState: {},
   setIOweName: noop,
   toggleIoOrder: noop
 }
