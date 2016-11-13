@@ -57,8 +57,7 @@ gutil.log(` --- Webpack config loaded: ${webpackConfigSrc} --- `)
 
 const sassOptions = {
   errLogToConsole: true,
-  outputStyle: isProduction ? 'compressed' : 'expanded',
-  outFile: cssName
+  outputStyle: isProduction ? 'compressed' : 'expanded'
 }
 
 gulp.task('sass', function () {
