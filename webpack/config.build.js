@@ -13,7 +13,6 @@ const webpack = require('webpack')
 
 const root = path.join(__dirname, '../')
 const srcDir = 'src'
-const outputDir = isProduction ? 'dist/production/assets/scripts' : 'dist/development/assets/scripts'
 
 const webpackDeDupe = new webpack.optimize.DedupePlugin()
 const webpackOccuranceOrder = new webpack.optimize.OccurenceOrderPlugin()
@@ -45,36 +44,38 @@ const devtool = isProduction ? 'cheap-module-source-map' : 'eval'
  * Export build config
  */
 
-module.exports = {
-  debug: false,
-  devtool: devtool, // default: Production sourcemaps
+module.exports = function (outputDir, outName) {
+  return {
+    debug: false,
+    devtool: devtool, // default: Production sourcemaps
 
-  context: root, // default: up 1 directory from this file's location
+    context: root, // default: up 1 directory from this file's location
 
-  entry: `./${srcDir}/scripts/index.js`,
+    entry: `./${srcDir}/scripts/index.js`,
 
-  resolve: {
-    extensions: ['', '.js']
-  },
+    resolve: {
+      extensions: ['', '.js']
+    },
 
-  output: {
-    path: path.join(root, outputDir),
-    filename: 'bundle.js',
-    publicPath: '/assets/'
-  },
+    output: {
+      path: outputDir,
+      filename: outName || 'bundle.js',
+      publicPath: '/assets/'
+    },
 
-  module: {
-    loaders: [
-      {
-        test: /\.js$/,
-        loader: 'babel',
-        exclude: /node_modules/,
-        include: [
-          path.join(root, srcDir, 'scripts')
-        ]
-      }
-    ]
-  },
+    module: {
+      loaders: [
+        {
+          test: /\.js$/,
+          loader: 'babel',
+          exclude: /node_modules/,
+          include: [
+            path.join(root, srcDir, 'scripts')
+          ]
+        }
+      ]
+    },
 
-  plugins: plugins
+    plugins: plugins
+  }
 }

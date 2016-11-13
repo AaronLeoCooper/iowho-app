@@ -1,28 +1,28 @@
 .Page {
   @include block;
   text-align: center;
+}
 
-  .footer {
-    @include block(fixed);
-    text-align: center;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    font-size: .8rem;
-    margin-top: $gap-2;
-    padding: 5px 0;
-    @include linear-gradient;
+.footer {
+  @include block(fixed);
+  text-align: center;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  font-size: .8rem;
+  margin-top: $gap-2;
+  padding: 5px 0;
+  @include linear-gradient;
+}
+
+.footer-msg {
+  a {
+    color: $color-turquoise;
+    text-decoration: underline;
   }
 
-  .footer-msg {
-    a {
-      color: $color-turquoise;
-      text-decoration: underline;
-    }
-
-    em {
-      color: $color-green;
-      font-style: normal;
-    }
+  em {
+    color: $color-green;
+    font-style: normal;
   }
 }

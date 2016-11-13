@@ -12,6 +12,7 @@
     "start": "better-npm-run start",
     "build:dev": "better-npm-run build:dev",
     "build:prod": "better-npm-run build:prod",
+    "build:placeholder": "better-npm-run build:placeholder",
     "test": "better-npm-run test",
     "test:watch": "better-npm-run test:watch"
   },
@@ -32,6 +33,12 @@
       "command": "gulp build:prod",
       "env": {
         "NODE_ENV": "production"
+      }
+    },
+    "build:placeholder": {
+      "command": "gulp build:placeholder",
+      "env": {
+        "NODE_ENV": "placeholder"
       }
     },
     "test": {
@@ -63,6 +70,7 @@
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.1",
     "gulp-plumber": "^1.1.0",
+    "gulp-pug": "^3.1.0",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.3.2",
     "gulp-size": "^2.1.0",
