@@ -21,6 +21,14 @@
   }
 
   .iowewidgetcontainer-styledinput-submit-button {
+    background: $color-green;
+    color: $color-white;
+    border-top-right-radius: $nice-radius;
+	  border-bottom-right-radius: $nice-radius;
+
+    &:active {
+      background-color: $color-green-light;
+    }
   }
 
   .iowewidgetcontainer-styledinput-arrow {

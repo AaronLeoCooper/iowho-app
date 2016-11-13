@@ -32,7 +32,8 @@ class StyledInput extends Component {
           className={inputClasses}
           placeholder={this.props.placeholder}
           onChange={this.props.onChange}
-          value={this.props.value} />
+          value={this.props.value}
+          tabIndex={this.props.tabIndex} />
         {rightEl}
         {errorEl}
       </div>
@@ -47,6 +48,7 @@ StyledInput.propTypes = {
   left: PropTypes.object,
   right: PropTypes.object,
   errorMsg: PropTypes.string,
+  tabIndex: PropTypes.string,
   onChange: PropTypes.func
 }
 
@@ -57,6 +59,7 @@ StyledInput.defaultProps = {
   left: {},
   right: {},
   errorMsg: '',
+  tabIndex: '',
   onChange: noop
 }
 

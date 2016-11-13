@@ -18,13 +18,16 @@ class IOweWidgetContainer extends Component {
     )
 
     const submitButton = (
-      <button className='iowewidgetcontainer-styledinput-submit-button' onClick={this.props.createOwe}>
+      <button
+        className='iowewidgetcontainer-styledinput-submit-button'
+        onClick={this.props.createOwe}
+        tabIndex='3'>
         <img className='iowewidgetcontainer-styledinput-arrow' src={`${process.env.ASSETS}/images/arrow.svg`} />
       </button>
     )
 
-    const errorMsg = this.props.error.hasError && this.props.error.key === 'amount'
-      ? this.props.error.message
+    const errorMsg = this.props.ErrorState.hasError && this.props.ErrorState.key === 'amount'
+      ? this.props.ErrorState.message
       : ''
 
     return (
@@ -36,7 +39,8 @@ class IOweWidgetContainer extends Component {
           right={{ label: submitButton }}
           onChange={this.props.setIOweAmount}
           value={this.props.amount}
-          errorMsg={errorMsg} />
+          errorMsg={errorMsg}
+          tabIndex='2' />
       </div>
     )
   }
@@ -54,13 +58,15 @@ IOweWidgetContainer.propTypes = {
   setIOweName: PropTypes.func,
   setIOweAmount: PropTypes.func,
   setIOweCurrency: PropTypes.func,
-  createOwe: PropTypes.func
+  createOwe: PropTypes.func,
+  ErrorState: PropTypes.object
 }
 
 const mapStateToProps = (state, ownProps) => {
   return {
     ...state.IOweWidget,
-    currency: actionCreators.getCurrency(state.IOweWidget)
+    currency: actionCreators.getCurrency(state.IOweWidget),
+    ErrorState: state.ErrorState
   }
 }
 

@@ -36,7 +36,8 @@ class PerformantInput extends Component {
         type={this.props.type}
         onChange={this.onChange}
         value={this.state.value}
-        placeholder={this.props.placeholder} />
+        placeholder={this.props.placeholder}
+        tabIndex={this.props.tabIndex} />
     )
   }
 }
@@ -48,6 +49,7 @@ PerformantInput.propTypes = {
   value: PropTypes.string,
   defaultValue: PropTypes.string,
   placeholder: PropTypes.string,
+  tabIndex: PropTypes.string,
   debounceDelay: PropTypes.number
 }
 
@@ -58,6 +60,7 @@ PerformantInput.defaultProps = {
   value: '',
   defaultValue: '',
   placeholder: '',
+  tabIndex: '',
   debounceDelay: 200
 }
 

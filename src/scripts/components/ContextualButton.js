@@ -3,7 +3,7 @@ import { Link } from 'react-router'
 import classnames from 'classnames'
 import { noop } from '../helpers/misc'
 
-function ContextualButton ({ className, to, children, badge, value, onClick }) {
+function ContextualButton ({ className, to, children, badge, value, tabIndex, onClick }) {
   const badgeEl = badge.label
     ? <div className='contextualbutton-badge'><span>{badge.label}</span></div>
     : null
@@ -16,7 +16,8 @@ function ContextualButton ({ className, to, children, badge, value, onClick }) {
         className={buttonClasses}
         to={to}
         onClick={onClick}
-        value={value}>
+        value={value}
+        tabIndex={tabIndex}>
         {children}
         {badgeEl}
       </Link>
@@ -26,7 +27,8 @@ function ContextualButton ({ className, to, children, badge, value, onClick }) {
       <button
         className={buttonClasses}
         onClick={onClick}
-        value={value}>
+        value={value}
+        tabIndex={tabIndex}>
         {children}
         {badgeEl}
       </button>
@@ -40,6 +42,7 @@ ContextualButton.propTypes = {
   children: PropTypes.node,
   badge: PropTypes.object,
   value: PropTypes.string,
+  tabIndex: PropTypes.string,
   onClick: PropTypes.func
 }
 
@@ -49,6 +52,7 @@ ContextualButton.defaultProps = {
   children: '',
   badge: {},
   value: '',
+  tabIndex: '',
   onClick: noop
 }
 

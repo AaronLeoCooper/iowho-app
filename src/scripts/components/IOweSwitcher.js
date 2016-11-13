@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import classnames from 'classnames'
 import PerformantInput from './PerformantInput'
+import { noop } from '../helpers/misc'
 
 class IOweSwitcher extends Component {
   setIOweName = (val) => {
@@ -20,7 +21,8 @@ class IOweSwitcher extends Component {
           type='text'
           onChange={this.props.setIOweName}
           value={this.props.name}
-          placeholder='who?' />
+          placeholder='who?'
+          tabIndex='1' />
         {errorEl}
         <button className='ioweswitcher-button' onClick={this.props.toggleIoOrder} />
       </div>
@@ -34,6 +36,14 @@ IOweSwitcher.propTypes = {
   error: PropTypes.object,
   setIOweName: PropTypes.func,
   toggleIoOrder: PropTypes.func
+}
+
+IOweSwitcher.defaultProps = {
+  name: '',
+  iOweThem: true,
+  error: {},
+  setIOweName: noop,
+  toggleIoOrder: noop
 }
 
 export default IOweSwitcher

@@ -3,7 +3,8 @@
  */
 
 import { IOweWidget as getInitState } from '../initState'
-import { IOweWidget as C } from '../constants'
+import { IOweWidget as C, App as C_App } from '../constants'
+import * as ErrorState from './ErrorState'
 import { createSelector } from 'reselect'
 import { validateOwe } from '../../helpers/owe-helpers.js'
 
@@ -42,11 +43,11 @@ export const createOwe = (owe = {}) => {
     const validOwe = validateOwe(owe)
 
     if (validOwe.hasError) {
-      dispatch({ type: C.CREATE_ERROR, payload: validOwe })
+      dispatch(ErrorState.createError(validOwe))
     } else {
       dispatch({ type: C.CREATE_OWE, payload: owe })
       dispatch(clearOweState())
-      dispatch(clearError())
+      dispatch(ErrorState.clearError())
     }
   }
 }
@@ -73,9 +74,12 @@ export const removeOwe = (oweId = undefined) => {
   }
 }
 
-export const createError = (error = {}) => ({ type: C.CREATE_ERROR, payload: error })
-export const clearError = () => ({ type: C.CLEAR_ERROR })
-export const clearAll = () => ({ type: C.CLEAR_ALL })
+export const clearAll = () => {
+  return (dispatch) => {
+    dispatch({ type: C.CLEAR_ALL })
+    dispatch(ErrorState.clearError())
+  }
+}
 
 // Selectors
 const getCurrenciesList = (state) => state.currenciesList
@@ -130,6 +134,7 @@ export default (state = getInitState(), action) => {
       return { ...state, error: initState.error }
 
     case C.CLEAR_ALL:
+    case C_App.CLEAR_ALL:
       return initState
 
     default: return state

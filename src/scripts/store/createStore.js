@@ -7,6 +7,19 @@ import thunk from 'redux-thunk'
 
 import rootReducer from './redux'
 
+// Control what exactly is stored in localStorage from state
+const statePersistSlicer = (paths) => {
+  return (state) => {
+    return {
+      IOweWidget: {
+        currenciesList: state.IOweWidget.currenciesList,
+        currencyKey: state.IOweWidget.currencyKey,
+        owes: state.IOweWidget.owes
+      }
+    }
+  }
+}
+
 export default (initState = {}) => {
   const storeMiddleware = process.env.NODE_ENV === 'production'
     ? [thunk, routerMiddleware(browserHistory)]
@@ -16,7 +29,7 @@ export default (initState = {}) => {
   const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
   const storeEnhancer = composeEnhancer(
     applyMiddleware(...storeMiddleware),
-    persistState(['IOweWidget'], { key: 'iowho-state' })
+    persistState(['IOweWidget'], { key: 'iowho-state', slicer: statePersistSlicer })
   )
 
   // Add the reducer to your store on the `routing` key

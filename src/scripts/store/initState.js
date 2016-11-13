@@ -8,6 +8,11 @@ export const IOweWidget = () => ({
   amount: '',
   currenciesList: ['$', '£', '€'],
   currencyKey: 0,
-  owes: [],
-  error: {}
+  owes: []
+})
+
+export const ErrorState = () => ({
+  hasError: false,
+  message: '',
+  key: ''
 })
