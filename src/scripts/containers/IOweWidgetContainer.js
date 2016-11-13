@@ -32,8 +32,6 @@ class IOweWidgetContainer extends Component {
       </button>
     )
 
-    console.log('this.props.ErrorState', this.props.ErrorState)
-
     const errorMsg = this.props.ErrorState.hasError && this.props.ErrorState.key === 'amount'
       ? this.props.ErrorState.message
       : ''

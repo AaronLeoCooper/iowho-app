@@ -39,8 +39,6 @@ export const createOwe = () => {
       currency: getCurrency(state)
     }
 
-    console.log('owe', owe)
-
     // Only create new owe if it passes validation
     const validOwe = validateOwe(owe)
 
