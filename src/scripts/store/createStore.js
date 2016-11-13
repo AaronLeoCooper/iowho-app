@@ -1,6 +1,7 @@
 import { createStore, compose, applyMiddleware } from 'redux'
 import { routerMiddleware } from 'react-router-redux'
 import { browserHistory } from 'react-router'
+import persistState from 'redux-localstorage'
 import logger from 'redux-logger'
 import thunk from 'redux-thunk'
 
@@ -13,7 +14,10 @@ export default (initState = {}) => {
 
   // Compose enhancer conditional to enable redux devtools browser exntension
   const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
-  const storeEnhancer = composeEnhancer(applyMiddleware(...storeMiddleware))
+  const storeEnhancer = composeEnhancer(
+    applyMiddleware(...storeMiddleware),
+    persistState(['IOweWidget'], { key: 'iowho-state' })
+  )
 
   // Add the reducer to your store on the `routing` key
   const store = createStore(

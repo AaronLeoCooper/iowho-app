@@ -51,7 +51,6 @@ export const removeOwe = (oweId = undefined) => {
     const owes = state.owes
       .filter(owe => owe.id !== oweId)
       .map(owe => {
-        console.log('looping owes', owe)
         if (owe.id > oweId) {
           owe.id -= 1
         }
