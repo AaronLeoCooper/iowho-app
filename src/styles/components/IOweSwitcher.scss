@@ -31,10 +31,10 @@ $ioweswitcher-middle-offset: 40px;
     color: $color-turquoise;
     @include placeholder($color-turquoise-trans);
 
-    /*&:focus {
+    &:focus {
       border-top: solid 2px transparent;
-      border-bottom: solid 2px $color-navy;
-    }*/
+      border-bottom: solid 2px $color-turquoise;
+    }
   }
 
   .ioweswitcher-button {
@@ -51,6 +51,10 @@ $ioweswitcher-middle-offset: 40px;
     background-position: center center;
     background-repeat: no-repeat;
     transition: transform .2s ease;
+  }
+
+  .iowswitcher-input-error {
+    margin-top: -5px;
   }
 
   &.iowethem {

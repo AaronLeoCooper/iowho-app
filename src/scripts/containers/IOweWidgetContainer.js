@@ -23,6 +23,10 @@ class IOweWidgetContainer extends Component {
       </button>
     )
 
+    const errorMsg = this.props.error.hasError && this.props.error.key === 'amount'
+      ? this.props.error.message
+      : ''
+
     return (
       <div className='IOweWidgetContainer'>
         <IOweSwitcher {...this.props} />
@@ -30,7 +34,9 @@ class IOweWidgetContainer extends Component {
           className='iowewidgetcontainer-styledinput'
           left={{ label: currencySelect }}
           right={{ label: submitButton }}
-          onChange={this.props.setIOweAmount} />
+          onChange={this.props.setIOweAmount}
+          value={this.props.amount}
+          errorMsg={errorMsg} />
       </div>
     )
   }
@@ -43,6 +49,7 @@ IOweWidgetContainer.propTypes = {
   currenciesList: PropTypes.array,
   currencyKey: PropTypes.number,
   currency: PropTypes.string,
+  error: PropTypes.object,
   toggleIoOrder: PropTypes.func,
   setIOweName: PropTypes.func,
   setIOweAmount: PropTypes.func,

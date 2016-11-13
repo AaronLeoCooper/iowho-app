@@ -19,6 +19,10 @@ class StyledInput extends Component {
       { 'has-right-block': !!this.props.right.label }
     )
 
+    const errorEl = this.props.errorMsg
+      ? <span className='error-msg styledinput-error'>{this.props.errorMsg}</span>
+      : null
+
     const wrapperClasses = classnames('StyledInput', this.props.className)
 
     return (
@@ -28,8 +32,9 @@ class StyledInput extends Component {
           className={inputClasses}
           placeholder={this.props.placeholder}
           onChange={this.props.onChange}
-          defaultValue={this.props.defaultValue} />
+          value={this.props.value} />
         {rightEl}
+        {errorEl}
       </div>
     )
   }
@@ -38,18 +43,20 @@ class StyledInput extends Component {
 StyledInput.propTypes = {
   placeholder: PropTypes.string,
   className: PropTypes.string,
-  defaultValue: PropTypes.string,
+  value: PropTypes.string,
   left: PropTypes.object,
   right: PropTypes.object,
+  errorMsg: PropTypes.string,
   onChange: PropTypes.func
 }
 
 StyledInput.defaultProps = {
   placeholder: '',
   className: '',
-  defaultValue: '',
+  value: '',
   left: {},
   right: {},
+  errorMsg: '',
   onChange: noop
 }
 

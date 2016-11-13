@@ -5,6 +5,7 @@
 import { IOweWidget as getInitState } from '../initState'
 import { IOweWidget as C } from '../constants'
 import { createSelector } from 'reselect'
+import { validateOwe } from '../../helpers/owe-helpers.js'
 
 // Action creators
 export const toggleIoOrder = (iOweThem = undefined) => {
@@ -37,9 +38,20 @@ export const createOwe = (owe = {}) => {
       currency: getCurrency(state)
     }
 
-    dispatch({ type: C.CREATE_OWE, payload: owe })
+    // Only create new owe if it passes validation
+    const validOwe = validateOwe(owe)
+
+    if (validOwe.hasError) {
+      dispatch({ type: C.CREATE_ERROR, payload: validOwe })
+    } else {
+      dispatch({ type: C.CREATE_OWE, payload: owe })
+      dispatch(clearOweState())
+      dispatch(clearError())
+    }
   }
 }
+
+export const clearOweState = () => ({ type: C.CLEAR_OWE_STATE })
 
 export const removeOwe = (oweId = undefined) => {
   oweId = parseInt(oweId)
@@ -61,6 +73,10 @@ export const removeOwe = (oweId = undefined) => {
   }
 }
 
+export const createError = (error = {}) => ({ type: C.CREATE_ERROR, payload: error })
+export const clearError = () => ({ type: C.CLEAR_ERROR })
+export const clearAll = () => ({ type: C.CLEAR_ALL })
+
 // Selectors
 const getCurrenciesList = (state) => state.currenciesList
 const getCurrencyKey = (state) => state.currencyKey
@@ -78,6 +94,8 @@ export const getOwesCount = createSelector(
 
 // Reducer
 export default (state = getInitState(), action) => {
+  let initState = getInitState()
+
   switch (action.type) {
     case C.TOGGLE_THEM:
       return { ...state, iOweThem: action.payload }
@@ -94,8 +112,25 @@ export default (state = getInitState(), action) => {
     case C.CREATE_OWE:
       return { ...state, owes: [ ...state.owes, action.payload ] }
 
+    case C.CLEAR_OWE_STATE:
+      return {
+        ...state,
+        iOweThem: initState.iOweThem,
+        name: initState.name,
+        amount: initState.amount
+      }
+
     case C.REMOVE_OWE:
       return { ...state, owes: action.payload }
+
+    case C.CREATE_ERROR:
+      return { ...state, error: action.payload }
+
+    case C.CLEAR_ERROR:
+      return { ...state, error: initState.error }
+
+    case C.CLEAR_ALL:
+      return initState
 
     default: return state
   }

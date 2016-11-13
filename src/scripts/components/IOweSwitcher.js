@@ -8,6 +8,10 @@ class IOweSwitcher extends Component {
   }
 
   render () {
+    const errorEl = this.props.error.hasError && this.props.error.key === 'name'
+      ? <span className='error-msg iowswitcher-input-error'>{this.props.error.message}</span>
+      : null
+
     return (
       <div className={classnames('IOweSwitcher', { 'iowethem': this.props.iOweThem })}>
         <span className='ioweswitcher-text-iowe'>{ this.props.iOweThem ? 'i owe' : 'owes me' }</span>
@@ -15,8 +19,9 @@ class IOweSwitcher extends Component {
           className='ioweswitcher-text-input'
           type='text'
           onChange={this.props.setIOweName}
-          defaultValue={this.props.name}
+          value={this.props.name}
           placeholder='who?' />
+        {errorEl}
         <button className='ioweswitcher-button' onClick={this.props.toggleIoOrder} />
       </div>
     )
@@ -26,6 +31,7 @@ class IOweSwitcher extends Component {
 IOweSwitcher.propTypes = {
   name: PropTypes.string,
   iOweThem: PropTypes.bool,
+  error: PropTypes.object,
   setIOweName: PropTypes.func,
   toggleIoOrder: PropTypes.func
 }

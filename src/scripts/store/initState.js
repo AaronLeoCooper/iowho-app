@@ -8,5 +8,6 @@ export const IOweWidget = () => ({
   amount: '',
   currenciesList: ['$', '£', '€'],
   currencyKey: 0,
-  owes: []
+  owes: [],
+  error: {}
 })
