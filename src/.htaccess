@@ -1,1 +1,4 @@
 DirectoryIndex index.html
+
+# directory browsing
+Options All -Indexes

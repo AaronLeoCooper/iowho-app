@@ -35,6 +35,7 @@ const srcPath = {
   fonts: path.join(srcDir, 'fonts'),
   pug: srcDir,
   htaccess: srcDir,
+  robots: srcDir,
   html: srcDir
 }
 
@@ -45,6 +46,7 @@ const distPath = {
   fonts: path.join(outputDir, 'assets', 'fonts'),
   pug: outputDir,
   htaccess: outputDir,
+  robots: outputDir,
   html: outputDir
 }
 
@@ -91,6 +93,12 @@ gulp.task('htaccess', function (cb) {
     .pipe(size({ title: 'htaccess' }))
 })
 
+gulp.task('robots', function (cb) {
+  return gulp.src(path.join(srcPath.robots, 'robots.txt'))
+    .pipe(gulp.dest(distPath.robots))
+    .pipe(size({ title: 'robots' }))
+})
+
 gulp.task('pug', function (cb) {
   return gulp.src(path.join(srcPath.pug, isPlaceholder ? 'placeholder.pug' : 'build.index.pug'))
     .pipe(pug({
@@ -134,11 +142,11 @@ gulp.task('build:dev', ['clean'], function (cb) {
 // build:prod
 gulp.task('build:prod', ['clean'], function (cb) {
   gutil.log('gulp - running task: [ build:prod ]')
-  runSequence(['pug', 'htaccess', 'sass', 'images', 'fonts'], 'webpack-build', cb)
+  runSequence(['pug', 'htaccess', 'robots', 'sass', 'images', 'fonts'], 'webpack-build', cb)
 })
 
 // build:placeholder
 gulp.task('build:placeholder', ['clean'], function (cb) {
   gutil.log('gulp - running task: [ build:placeholder ]')
-  runSequence(['pug', 'htaccess', 'sass', 'images', 'fonts'], cb)
+  runSequence(['pug', 'htaccess', 'robots', 'sass', 'images', 'fonts'], cb)
 })
