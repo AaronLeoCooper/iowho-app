@@ -15,7 +15,7 @@ export const getWindowBottom = () => {
 }
 
 export const getElementHeight = (el) => {
-  return !el ? 0 : (el.scrollHeight || el.offsetHeight || el.clientHeight)
+  return !el ? 0 : (el.offsetHeight || el.clientHeight)
 }
 
 // Handle scroll-into-view on subsection menu item toggle

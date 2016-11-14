@@ -58,8 +58,8 @@ class StyledSelect extends Component {
           onClick={this.toggleOpen}>{this.props.selectedValue}</button>
         <ReactCSSTransitionGroup
           transitionName='styledselect-items-animation'
-          transitionEnterTimeout={200}
-          transitionLeaveTimeout={200}>
+          transitionEnterTimeout={100}
+          transitionLeaveTimeout={100}>
           {itemsWrap}
         </ReactCSSTransitionGroup>
       </div>

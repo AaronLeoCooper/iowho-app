@@ -1,6 +1,7 @@
 $ioweswitcher-height: 50px;
 $ioweswitcher-button-size: 40px;
 $ioweswitcher-middle-offset: 40px;
+$ioweswitcher-middle-offset-mobile: 30px;
 
 .IOweSwitcherContainer {
   @include block;
@@ -25,9 +26,10 @@ $ioweswitcher-middle-offset: 40px;
     right: 50%;
     transform: translate(-$ioweswitcher-middle-offset, -50%);
     width: 200px;
+    width: 37vw;
+    max-width: 230px;
     background: transparent;
     text-align: right;
-    /*text-decoration: underline;*/
     color: $color-turquoise;
     @include placeholder($color-turquoise-trans);
 
@@ -79,7 +81,27 @@ $ioweswitcher-middle-offset: 40px;
   @include bp(sm, true) {
     .ioweswitcher-text-iowe,
     .ioweswitcher-text-input {
-      font-size: 1.6rem;
+      font-size: 1.5rem;
+    }
+
+    .ioweswitcher-text-iowe {
+      transform: translate($ioweswitcher-middle-offset-mobile, -50%);
+    }
+
+    .ioweswitcher-text-input {
+      width: 110px;
+      width: 37vw;
+      transform: translate(-$ioweswitcher-middle-offset-mobile, -50%);
+    }
+
+    &.iowethem {
+      .ioweswitcher-text-iowe {
+        transform: translate(-$ioweswitcher-middle-offset-mobile, -50%);
+      }
+
+      .ioweswitcher-text-input {
+        transform: translate($ioweswitcher-middle-offset-mobile, -50%);
+      }
     }
   }
 }
