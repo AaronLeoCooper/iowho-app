@@ -9,6 +9,7 @@
 
 const path = require('path')
 const webpack = require('webpack')
+const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
 
 const root = path.join(__dirname, '../')
 const srcDir = 'src'
@@ -22,6 +23,14 @@ const webpackEnv = new webpack.DefinePlugin({
     'ASSETS': JSON.stringify(`http://localhost:${port}`)
   }
 })
+const browserSyncPlugin = new BrowserSyncPlugin(
+  {
+    host: 'localhost',
+    port: port + 1,
+    proxy: `http://localhost:${port}/` // Proxy to the HMR server
+  },
+  { reload: false } // Let HMR do the reloading
+)
 
 
 
@@ -43,7 +52,7 @@ module.exports = {
   ],
 
   output: {
-    path: path.join(root, outputDir),
+    path: path.join(root, outputDir), // Unused in HMR, but required by config
     filename: 'bundle.js',
     publicPath: '/assets/'
   },
@@ -73,7 +82,7 @@ module.exports = {
     ]
   },
 
-  plugins: [ webpackEnv, new webpack.HotModuleReplacementPlugin() ], // HMR only
+  plugins: [ webpackEnv, new webpack.HotModuleReplacementPlugin(), browserSyncPlugin ], // HMR only
 
   devServer: { // HMR only
     colors: true,

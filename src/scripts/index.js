@@ -7,6 +7,8 @@ import { AppContainer } from 'react-hot-loader'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import AppRouter from './AppRouter'
+import injectTapEventPlugin from 'react-tap-event-plugin'
+injectTapEventPlugin() // Fix dreaded tap event delays
 
 if (process.env.HMR) {
   // Webpack HMR only - load in scss

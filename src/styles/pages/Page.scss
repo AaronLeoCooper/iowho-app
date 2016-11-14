@@ -3,6 +3,10 @@
   text-align: center;
 }
 
+.page-content {
+  padding-bottom: $gap-3;
+}
+
 .footer {
   @include block(fixed);
   text-align: center;
@@ -13,6 +17,10 @@
   margin-top: $gap-2;
   padding: 5px 0;
   @include linear-gradient;
+
+  &.pos-absolute {
+    position: absolute;
+  }
 }
 
 .footer-msg {

@@ -12,9 +12,11 @@ html,
 body {
   @include block;
   line-height: 1.6rem;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
+  overflow: hidden;
   background-image: url(../images/noise100.png);
 
   &:before {
