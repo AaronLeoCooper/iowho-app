@@ -17,6 +17,13 @@ export const IOweWidget = {
   CLEAR_ALL: 'IOWidget__CLEAR_ALL'
 }
 
+export const OwesState = {
+  SET_CURRENCY: 'OwesState__SET_CURRENCY',
+  CREATE_OWE: 'OwesState__CREATE_OWE',
+  REMOVE_OWE: 'OwesState__REMOVE_OWE',
+  CLEAR_ALL: 'OwesState__CLEAR_ALL'
+}
+
 export const ErrorState = {
   CREATE_ERROR: 'ErrorState__CREATE_ERROR',
   CLEAR_ERROR: 'ErrorState__CLEAR_ERROR'

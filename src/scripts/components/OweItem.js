@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react'
+import classnames from 'classnames'
 
 class OweItem extends Component {
   removeOwe = (e) => {
@@ -20,8 +21,10 @@ class OweItem extends Component {
       )
     })
 
+    const classes = classnames('OweItem', this.props.className)
+
     return (
-      <div className='OweItem'>
+      <div className={classes}>
         <div className='oweitem-content'>
           {content}
         </div>
@@ -40,6 +43,7 @@ class OweItem extends Component {
 
 OweItem.propTypes = {
   id: PropTypes.number,
+  className: PropTypes.string,
   iOweThem: PropTypes.bool,
   name: PropTypes.string,
   amount: PropTypes.string,

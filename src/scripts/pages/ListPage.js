@@ -13,19 +13,18 @@ class ListPage extends Component {
       return <OweItem key={`oweitem-${owe.id}`} removeOwe={this.props.removeOwe} {...owe} />
     })
 
-    const content = owes.length > 0
-      ? (
-        <div className='listpage-owelist'>
-          {owes}
-        </div>
-      )
-      : <div className='listpage-owelist-emptymsg'>Grats, you have no owes!</div>
+    const noOwes = owes.length === 0
+      ? <div className='listpage-owelist-emptymsg'>Grats, you have no owes!</div>
+      : null
 
     return (
       <Page className='ListPage' title='Who Owes What?'>
         <h1>Who Owes What?</h1>
         <div className='listpage-content'>
-          {content}
+          <div className='listpage-owelist'>
+            {owes}
+          </div>
+          {noOwes}
         </div>
         <Link to={paths.Index} className='cta cta-turquoise'>Add a new Owe</Link>
       </Page>

@@ -1,0 +1,12 @@
+.OweListContainer {
+  @include block;
+
+  .owelist-content{
+    @include block(inline);
+    background-color: $color-white;
+    border-radius: $nice-radius;
+    overflow: hidden;
+    margin-bottom: $gap-1;
+    @include shadow;
+  }
+}

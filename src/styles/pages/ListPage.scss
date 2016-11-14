@@ -13,10 +13,29 @@
     @include block(inline);
     background-color: $color-white;
     border-radius: $nice-radius;
+    overflow: hidden;
     @include shadow;
   }
 
   .listpage-owelist-emptymsg {
     font-size: 1.5rem;
+  }
+
+  .listpage-oweitem-animation-enter {
+    transform: translateX(-100%);
+
+    &.listpage-oweitem-animation-enter-active {
+      transform: translateX(0);
+      transition: transform .2s ease;
+    }
+  }
+
+  .listpage-oweitem-animation-leave {
+    transform: translateX(0);
+
+    &.listpage-oweitem-animation-leave-active {
+      transform: translateX(-100%);
+      transition: transform .2s ease;
+    }
   }
 }

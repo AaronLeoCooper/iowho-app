@@ -19,9 +19,10 @@
 
 // Containers
 @import 'containers/IOweWidgetContainer';
+@import 'containers/IOweSwitcherContainer';
+@import 'containers/OweListContainer';
 
 // Components
-@import 'components/IOweSwitcher';
 @import 'components/StyledInput';
 @import 'components/StyledSelect';
 @import 'components/ContextualButton';

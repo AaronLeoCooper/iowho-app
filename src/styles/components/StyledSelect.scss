@@ -11,8 +11,17 @@ $styledselect-width: 50px;
     height: 100%;
   }
 
-  .styledselect-items {
+  .styledselect-items-wrap {
     @include block(absolute);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  .styledselect-items {
+    position: absolute;
+    /*display: none;*/
     left: 0;
     right: 0;
     top: 50%;
@@ -21,10 +30,9 @@ $styledselect-width: 50px;
     border-radius: $nice-radius;
     overflow: hidden;
     @include shadow(2);
-    display: none;
 
     &.is-open {
-      display: block;
+      /*display: block;*/
     }
   }
 
@@ -38,4 +46,21 @@ $styledselect-width: 50px;
     }
   }
 
+  .styledselect-items-animation-enter {
+    opacity: 0;
+
+    &.styledselect-items-animation-enter-active {
+      opacity: 1;
+      transition: opacity .2s linear;
+    }
+  }
+
+  .styledselect-items-animation-leave {
+    opacity: 1;
+
+    &.styledselect-items-animation-leave-active {
+      opacity: 0;
+      transition: opacity .2s linear;
+    }
+  }
 }

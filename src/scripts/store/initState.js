@@ -5,7 +5,10 @@
 export const IOweWidget = () => ({
   iOweThem: true,
   name: '',
-  amount: '',
+  amount: ''
+})
+
+export const OwesState = () => ({
   currenciesList: ['$', '£', '€'],
   currencyKey: 0,
   owes: []

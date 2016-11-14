@@ -2,7 +2,7 @@ $ioweswitcher-height: 50px;
 $ioweswitcher-button-size: 40px;
 $ioweswitcher-middle-offset: 40px;
 
-.IOweSwitcher {
+.IOweSwitcherContainer {
   @include block;
   text-align: center;
   height: $ioweswitcher-height;
@@ -73,6 +73,13 @@ $ioweswitcher-middle-offset: 40px;
 
     .ioweswitcher-button {
       transform: translateY(-50%) rotate(180deg);
+    }
+  }
+
+  @include bp(sm, true) {
+    .ioweswitcher-text-iowe,
+    .ioweswitcher-text-input {
+      font-size: 1.6rem;
     }
   }
 }

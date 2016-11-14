@@ -1,4 +1,6 @@
 import React, { Component, PropTypes } from 'react'
+import enhanceWithClickOutside from 'react-click-outside'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import classnames from 'classnames'
 
 class StyledSelect extends Component {
@@ -6,15 +8,28 @@ class StyledSelect extends Component {
     super(props)
 
     this.state = { isOpen: false }
+
+    this.dropdownTransition = {
+      enter: { animation: 'fadeIn', duration: 250 },
+      leave: { animation: 'fadeOut', duration: 250 }
+    }
   }
 
-  toggleOpen = () => {
-    this.setState({ isOpen: !this.state.isOpen })
+  toggleOpen = (bool) => {
+    if (typeof bool === 'boolean') {
+      this.setState({ isOpen: false })
+    } else {
+      this.setState({ isOpen: !this.state.isOpen })
+    }
   }
 
   onChange = (e) => {
     this.toggleOpen()
     this.props.onChange(parseInt(e.target.value))
+  }
+
+  handleClickOutside = () => {
+    this.toggleOpen(false)
   }
 
   render () {
@@ -29,15 +44,24 @@ class StyledSelect extends Component {
       )
     })
 
-    let itemsClasses = classnames('styledselect-items', { 'is-open': this.state.isOpen })
+    const itemsClasses = classnames('styledselect-items', { 'is-open': this.state.isOpen })
+
+    const itemsWrap = this.state.isOpen
+      ? <div key='styledselect-items-${this.props.name}' className={itemsClasses}>{items}</div>
+      : null
 
     return (
-      <div className='StyledSelect'>
+      <div className='StyledSelect' style={{ zIndex: this.props.zIndex }}>
         <button
           className='styledselect-button'
           value={this.props.selectedValue}
           onClick={this.toggleOpen}>{this.props.selectedValue}</button>
-        <div className={itemsClasses}>{items}</div>
+        <ReactCSSTransitionGroup
+          transitionName='styledselect-items-animation'
+          transitionEnterTimeout={200}
+          transitionLeaveTimeout={200}>
+          {itemsWrap}
+        </ReactCSSTransitionGroup>
       </div>
     )
   }
@@ -52,6 +76,7 @@ StyledSelect.propTypes = {
     PropTypes.number
   ]),
   items: PropTypes.array,
+  zIndex: PropTypes.string,
   onChange: PropTypes.func
 }
 
@@ -61,7 +86,8 @@ StyledSelect.defaultProps = {
   placeholder: '',
   selectedValue: '',
   items: [],
+  zIndex: '',
   onChange: () => null
 }
 
-export default StyledSelect
+export default enhanceWithClickOutside(StyledSelect)

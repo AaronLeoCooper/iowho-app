@@ -1,9 +1,12 @@
 import React, { Component, PropTypes } from 'react'
+import { connect } from 'react-redux'
 import classnames from 'classnames'
-import PerformantInput from './PerformantInput'
-import { noop } from '../helpers/misc'
 
-class IOweSwitcher extends Component {
+import PerformantInput from '../components/PerformantInput'
+import { noop } from '../helpers/misc'
+import * as actionCreators from '../store/redux/IOweWidget'
+
+class IOweSwitcherContainer extends Component {
   setIOweName = (val) => {
     this.props.setIOweName(val)
   }
@@ -14,7 +17,7 @@ class IOweSwitcher extends Component {
       : null
 
     return (
-      <div className={classnames('IOweSwitcher', { 'iowethem': this.props.iOweThem })}>
+      <div className={classnames('IOweSwitcherContainer', { 'iowethem': this.props.iOweThem })}>
         <span className='ioweswitcher-text-iowe'>{ this.props.iOweThem ? 'i owe' : 'owes me' }</span>
         <PerformantInput
           className='ioweswitcher-text-input'
@@ -30,7 +33,7 @@ class IOweSwitcher extends Component {
   }
 }
 
-IOweSwitcher.propTypes = {
+IOweSwitcherContainer.propTypes = {
   name: PropTypes.string,
   iOweThem: PropTypes.bool,
   ErrorState: PropTypes.object,
@@ -38,7 +41,7 @@ IOweSwitcher.propTypes = {
   toggleIoOrder: PropTypes.func
 }
 
-IOweSwitcher.defaultProps = {
+IOweSwitcherContainer.defaultProps = {
   name: '',
   iOweThem: true,
   ErrorState: {},
@@ -46,4 +49,14 @@ IOweSwitcher.defaultProps = {
   toggleIoOrder: noop
 }
 
-export default IOweSwitcher
+const mapStateToProps = (state, ownProps) => {
+  return {
+    ...state.IOweWidget,
+    ErrorState: state.ErrorState
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  { ...actionCreators }
+)(IOweSwitcherContainer)

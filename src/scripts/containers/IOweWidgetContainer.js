@@ -2,7 +2,8 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 
 import * as actionCreators from '../store/redux/IOweWidget'
-import IOweSwitcher from '../components/IOweSwitcher'
+import { getCurrency, setCurrency, createOwe } from '../store/redux/OwesState'
+import IOweSwitcherContainer from '../containers/IOweSwitcherContainer'
 import StyledInput from '../components/StyledInput'
 import StyledSelect from '../components/StyledSelect'
 
@@ -20,7 +21,8 @@ class IOweWidgetContainer extends Component {
         className='iowewidgetcontainer-styledinput-currency-button'
         selectedValue={this.props.currency}
         items={this.props.currenciesList}
-        onChange={this.props.setIOweCurrency} />
+        onChange={this.props.setCurrency}
+        zIndex='5' />
     )
 
     const submitButton = (
@@ -38,7 +40,7 @@ class IOweWidgetContainer extends Component {
 
     return (
       <div className='IOweWidgetContainer'>
-        <IOweSwitcher {...this.props} />
+        <IOweSwitcherContainer {...this.props} />
         <StyledInput
           className='iowewidgetcontainer-styledinput'
           left={{ label: currencySelect }}
@@ -63,7 +65,7 @@ IOweWidgetContainer.propTypes = {
   toggleIoOrder: PropTypes.func,
   setIOweName: PropTypes.func,
   setIOweAmount: PropTypes.func,
-  setIOweCurrency: PropTypes.func,
+  setCurrency: PropTypes.func,
   createOwe: PropTypes.func,
   ErrorState: PropTypes.object
 }
@@ -71,12 +73,13 @@ IOweWidgetContainer.propTypes = {
 const mapStateToProps = (state, ownProps) => {
   return {
     ...state.IOweWidget,
-    currency: actionCreators.getCurrency(state.IOweWidget),
+    ...state.OwesState,
+    currency: getCurrency(state.OwesState),
     ErrorState: state.ErrorState
   }
 }
 
 export default connect(
   mapStateToProps,
-  { ...actionCreators }
+  { ...actionCreators, setCurrency, createOwe }
 )(IOweWidgetContainer)

@@ -1,9 +1,10 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 
-import { getOwesCount } from '../store/redux/IOweWidget'
+import { getOwesCount } from '../store/redux/OwesState'
 import * as paths from '../routes'
 import Page from './Page'
+import OweListContainer from '../containers/OweListContainer'
 import IOweWidgetContainer from '../containers/IOweWidgetContainer'
 import ContextualButton from '../components/ContextualButton'
 
@@ -15,13 +16,8 @@ class HomePage extends Component {
           <img className='homepage-logo-img' src={`${process.env.ASSETS}/images/iowho-logo.svg`} alt='IOWho Logo' />
           <span className='homepage-logo-text'>The blissfully simple money lending tracker</span>
         </h1>
+        <OweListContainer />
         <IOweWidgetContainer />
-        <ContextualButton
-          to={paths.List}
-          className='cta cta-turquoise'
-          badge={{ type: 'count', label: this.props.owesCount }}>
-          Who owes what?
-        </ContextualButton>
       </Page>
     )
   }
