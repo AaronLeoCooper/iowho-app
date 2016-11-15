@@ -16,6 +16,7 @@ const plumber = require('gulp-plumber')
 const size = require('gulp-size')
 const rename = require('gulp-rename')
 const sass = require('gulp-sass')
+const csso = require('gulp-csso')
 const sourcemaps = require('gulp-sourcemaps')
 const autoprefixer = require('gulp-autoprefixer')
 const autoprefixerBrowsers = [ 'ie >= 9', 'ie_mob >= 10', 'ff >= 30', 'chrome >= 34', 'safari >= 6', 'opera >= 23', 'ios >= 6', 'android >= 4.4', 'bb >= 10' ]
@@ -59,16 +60,21 @@ gutil.log(` --- Webpack config loaded: ${webpackConfigSrc} --- `)
 
 const sassOptions = {
   errLogToConsole: true,
-  outputStyle: isProduction ? 'compressed' : 'expanded'
+  outputStyle: 'expanded' // Production compression we'll leave up to csso
+}
+
+const cssoOptions = {
+  sourceMap: true
 }
 
 gulp.task('sass', function () {
   return gulp.src(path.join(srcPath.styles, 'app.scss'))
-    .pipe(sourcemaps.init())
+    .pipe(!isProduction ? sourcemaps.init() : gutil.noop())
     .pipe(sass(sassOptions).on('error', sass.logError))
     .pipe(autoprefixer({ browsers: autoprefixerBrowsers }))
-    .pipe(sourcemaps.write())
+    .pipe(!isProduction ? sourcemaps.write() : gutil.noop())
     .pipe(rename(cssName))
+    .pipe(isProduction ? csso(cssoOptions) : gutil.noop()) // Production compression
     .pipe(gulp.dest(distPath.styles))
     .pipe(size({ title: 'sass' }))
 })
