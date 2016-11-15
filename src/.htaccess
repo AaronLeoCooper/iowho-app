@@ -4,6 +4,6 @@ DirectoryIndex index.html
 Options All -Indexes
 
 # One month for most static assets
-<filesMatch ".(css|jpg|jpeg|png|gif|js|ico|map)$">
+<filesMatch ".(css|jpg|jpeg|png|gif|js|ico|svg|ttf|map)$">
 Header set Cache-Control "max-age=2628000, public"
 </filesMatch>
