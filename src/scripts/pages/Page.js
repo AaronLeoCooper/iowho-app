@@ -24,11 +24,9 @@ class Page extends Component {
     })
   }
 
-  componentWillMount () {
-    this.updateDimensions()
-  }
-
   componentDidMount () {
+    this.updateDimensions()
+
     const contentEl = document.getElementsByClassName('Page')[0]
 
     this.setState({

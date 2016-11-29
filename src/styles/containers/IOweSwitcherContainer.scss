@@ -7,7 +7,7 @@ $ioweswitcher-middle-offset-mobile: 30px;
   @include block;
   text-align: center;
   height: $ioweswitcher-height;
-  margin-bottom: $gap-1;
+  margin-bottom: $gap-2;
 
   .ioweswitcher-text-iowe,
   .ioweswitcher-text-input {
@@ -28,14 +28,13 @@ $ioweswitcher-middle-offset-mobile: 30px;
     width: 200px;
     width: 37vw;
     max-width: 230px;
-    background: transparent;
     text-align: right;
-    color: $color-turquoise;
-    @include placeholder($color-turquoise-trans);
+    overflow: hidden;
 
-    &:focus {
-      border-top: solid 2px transparent;
-      border-bottom: solid 2px $color-turquoise;
+    > .styledinput-input {
+      overflow: hidden;
+      width: 100%;
+      text-align: right;
     }
   }
 
@@ -56,7 +55,7 @@ $ioweswitcher-middle-offset-mobile: 30px;
   }
 
   .iowswitcher-input-error {
-    margin-top: -5px;
+    margin-top: -2px;
   }
 
   &.iowethem {
@@ -71,6 +70,10 @@ $ioweswitcher-middle-offset-mobile: 30px;
       left: 50%;
       transform: translate($ioweswitcher-middle-offset, -50%);
       text-align: left;
+
+      > .styledinput-input {
+        text-align: left;
+      }
     }
 
     .ioweswitcher-button {
@@ -92,6 +95,10 @@ $ioweswitcher-middle-offset-mobile: 30px;
       width: 110px;
       width: 37vw;
       transform: translate(-$ioweswitcher-middle-offset-mobile, -50%);
+
+      > .styledinput-input {
+        padding: 0.3em 0.5em;
+      }
     }
 
     &.iowethem {

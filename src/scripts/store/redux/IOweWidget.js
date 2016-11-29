@@ -5,7 +5,6 @@
 import { IOweWidget as getInitState } from '../initState'
 import { IOweWidget as C, App as C_App } from '../constants'
 import * as ErrorState from './ErrorState'
-import { createSelector } from 'reselect'
 
 // Action creators
 export const toggleIoOrder = (iOweThem = undefined) => {

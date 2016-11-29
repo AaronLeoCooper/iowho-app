@@ -5,6 +5,7 @@ $oweitem-ctas-icon-size: 30px;
   @include block;
   padding: 10px;
   border-bottom: dashed 1px $color-grey-4;
+  max-width: 100%;
 
   &:last-of-type {
     border-bottom: none;

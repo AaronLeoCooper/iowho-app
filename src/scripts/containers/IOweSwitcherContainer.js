@@ -2,7 +2,8 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import classnames from 'classnames'
 
-import PerformantInput from '../components/PerformantInput'
+// import PerformantInput from '../components/PerformantInput'
+import StyledInput from '../components/StyledInput'
 import { noop } from '../helpers/misc'
 import * as actionCreators from '../store/redux/IOweWidget'
 
@@ -19,13 +20,20 @@ class IOweSwitcherContainer extends Component {
     return (
       <div className={classnames('IOweSwitcherContainer', { 'iowethem': this.props.iOweThem })}>
         <span className='ioweswitcher-text-iowe'>{ this.props.iOweThem ? 'i owe' : 'owes me' }</span>
-        <PerformantInput
+        {/*<PerformantInput
           className='ioweswitcher-text-input'
           type='text'
           onChange={this.props.setIOweName}
           value={this.props.name}
           placeholder='who?'
-          tabIndex='1' />
+          tabIndex='1' />*/}
+        <StyledInput
+          className='ioweswitcher-text-input'
+          onChange={this.props.setIOweName}
+          value={this.props.name}
+          placeholder='who?'
+          tabIndex='1'
+          type='text' />
         {errorEl}
         <button className='ioweswitcher-button' onClick={this.props.toggleIoOrder} />
       </div>

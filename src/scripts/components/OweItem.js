@@ -33,7 +33,7 @@ class OweItem extends Component {
             className='oweitem-ctas-remove'
             onClick={this.removeOwe}
             value={this.props.id}>
-            <img className='oweitem-ctas-remove-icon' src={`${process.env.ASSETS}/images/check.svg`} />
+            <img className='oweitem-ctas-remove-icon' src={`${process.env.ASSETS}/images/check-paid.svg`} />
           </button>
         </div>
       </div>
