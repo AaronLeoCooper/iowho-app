@@ -4,11 +4,11 @@
 
   .owelist-content{
     @include block(inline);
-    background-color: $color-white;
+    @include shadow(1, true);
+    background-color: rgba($color-white, .4);
     border-radius: $nice-radius;
     overflow: hidden;
     margin-bottom: $gap-2;
-    @include shadow;
     max-width: 100%;
   }
 }

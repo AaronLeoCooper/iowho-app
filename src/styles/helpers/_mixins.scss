@@ -143,10 +143,15 @@ $sm-min: 568px;
   }
 }
 
-@mixin shadow($depth: 1) {
+@mixin shadow($depth: 1, $inset: false) {
   $baseline-blur: 1px;
 
-  box-shadow: 0 2px ($baseline-blur * ($depth * 2)) ($depth - 1 + px) rgba($color-black, .15);
+  @if $inset == true {
+    box-shadow: 0 2px ($baseline-blur * ($depth * 2)) ($depth - 1 + px) rgba($color-black, .15) inset;
+  }
+  @else {
+    box-shadow: 0 2px ($baseline-blur * ($depth * 2)) ($depth - 1 + px) rgba($color-black, .15);
+  }
 }
 
 @mixin padding($top-or-topbottom-or-all: 1, $bottom-or-sides: null, $left: null, $right: null) {

@@ -3,8 +3,8 @@ $oweitem-ctas-icon-size: 30px;
 
 .OweItem {
   @include block;
-  padding: 10px;
-  border-bottom: dashed 1px $color-grey-4;
+  padding: 15px 10px;
+  border-bottom: dashed 1px rgba($color-black, .2);
   max-width: 100%;
 
   &:last-of-type {
@@ -54,6 +54,10 @@ $oweitem-ctas-icon-size: 30px;
 
   .oweitem-ctas-remove {
     @include block;
+    @include shadow(1);
+    background: $color-green;
+    border-radius: $nice-radius;
+    padding: 2px;
   }
 
   .oweitem-ctas-remove-icon {
