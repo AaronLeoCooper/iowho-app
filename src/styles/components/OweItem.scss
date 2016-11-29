@@ -1,5 +1,5 @@
 $oweitem-ctas-width: 50px;
-$oweitem-ctas-icon-size: 30px;
+$oweitem-ctas-icon-size: 20px;
 
 .OweItem {
   @include block;
@@ -57,7 +57,7 @@ $oweitem-ctas-icon-size: 30px;
     @include shadow(1);
     background: $color-green;
     border-radius: $nice-radius;
-    padding: 2px;
+    padding: 5px;
   }
 
   .oweitem-ctas-remove-icon {
