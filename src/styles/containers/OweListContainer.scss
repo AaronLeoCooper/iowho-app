@@ -5,7 +5,7 @@
   .owelist-content{
     @include block(inline);
     @include shadow(1, true);
-    background-color: rgba($color-white, .4);
+    background-color: rgba($color-navy, .05);
     border-radius: $nice-radius;
     overflow: hidden;
     margin-bottom: $gap-2;
