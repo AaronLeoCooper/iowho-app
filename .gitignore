@@ -4,3 +4,5 @@ npm-debug*
 dist
 public_html
 ftp-sync.json
+.vscode
+.idea
