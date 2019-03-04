@@ -1,4 +1,6 @@
-# IOWho App
+<p align="center"><img src="https://iowhoapp.netlify.com/assets/images/iowho-logo.png"></p>
+
+# IOWho
 
 IOWho was a React application I developed back in 2016 as a small side-project to help me learn and understand
 the ReactJS and Redux synergy. It's backend-less and persists data using the browser's LocalStorage.
