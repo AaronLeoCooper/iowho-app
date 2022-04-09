@@ -79,7 +79,7 @@
     "gulp-util": "3.0.7",
     "gulp-watch": "4.3.10",
     "lodash": "4.16.6",
-    "moment": "2.15.1",
+    "moment": "2.29.2",
     "nodemon": "1.10.2",
     "parallelshell": "2.0.0",
     "react": "15.3.2",
